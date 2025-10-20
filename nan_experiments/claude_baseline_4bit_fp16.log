@@ -1,0 +1,4 @@
+Experiment: baseline_4bit_fp16
+Statistics:
+  NaNs: 0
+  Infs: 0
