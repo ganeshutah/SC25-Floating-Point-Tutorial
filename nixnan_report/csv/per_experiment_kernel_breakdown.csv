@@ -1,0 +1,15 @@
+experiment,kernel,first_nan,first_inf,first_nonfinite
+attention_clip,void pytorch_flash::flash_fwd_kernel,470,0,470
+baseline,void pytorch_flash::flash_fwd_kernel,550,0,550
+baseline,void cutlass::Kernel2,440,0,440
+baseline,void kgemm_4bit_inference_naive,2084,344,2428
+bfloat16,void pytorch_flash::flash_fwd_kernel,550,77,627
+bfloat16,void cutlass::Kernel2,368,76,444
+bfloat16,void kgemm_4bit_inference_naive,1004,662,1666
+eager,void cutlass::Kernel2,472,0,472
+eager,std::enable_if,8,160,168
+eager,void gemv2T_kernel_val,0,4,4
+eager,void gemv2N_kernel,0,108,108
+layernorm_eps,void pytorch_flash::flash_fwd_kernel,550,0,550
+layernorm_eps,void cutlass::Kernel2,440,0,440
+layernorm_eps,void kgemm_4bit_inference_naive,2084,374,2458
