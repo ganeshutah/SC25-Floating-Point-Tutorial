@@ -1,0 +1,74 @@
+Script started on 2025-09-23 23:25:29-06:00 [TERM="dumb" TTY="/dev/pts/23" COLUMNS="121" LINES="18"]
+ganesh@dknuth:~/repos/pytorch/issue-159333$ TOOL_VERBOSE=1 LD_PRELOAD=~/nixnan.so CUDA_VISIBLE_DEVICES=1 python run.py
+------------- NVBit (NVidia Binary Instrumentation Tool v1.7.5) Loaded --------------
+NVBit core environment variables (mostly for nvbit-devs):
+ACK_CTX_INIT_LIMITATION = 0 - if set, no warning will be printed for nvbit_at_ctx_init()
+            NVDISASM = nvdisasm - override default nvdisasm found in PATH
+            NOBANNER = 0 - if set, does not print this banner
+       NO_EAGER_LOAD = 0 - eager module loading is turned on by NVBit to prevent potential NVBit tool deadlock, turn it off if you want to use the lazy module loading feature
+---------------------------------------------------------------------------------
+         INSTR_BEGIN = 0 - Beginning of the instruction interval where to apply instrumentation
+           INSTR_END = 4294967295 - End of the instruction interval where to apply instrumentation
+        TOOL_VERBOSE = 1 - Enable verbosity inside the tool
+   ENABLE_FUN_DETAIL = 0 - Enable detailed function information for kernel
+     PRINT_ILL_INSTR = 0 - Print the instruction which caused the exception
+            SAMPLING = 0 - Instrument a repeat kernel every SAMPLING times
+           INSTR_MEM = 0 - Instrument memory instructions for NaN/Inf detection
+             LOGFILE =  - Path to the optional log file. Default is to print to stderr. This is useful for the case when an instrumented program is capturing stderr.
+           LINE_INFO = 0 - Enable debug information for source code locations. This may cause crashes, so set this to 0 if you encounter issues.
+#nixnan: ----------------------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ganesh/repos/pytorch/issue-159333/run.py", line 2, in <module>
+    a = torch.tensor([32763, 32764, 32765, 32766, 32767], dtype=torch.uint16, device='cuda').view(torch.bfloat16)
+  File "/home/ganesh/.local/lib/python3.10/site-packages/torch/__init__.py", line 1938, in __getattr__
+    raise AttributeError(f"module '{__name__}' has no attribute '{name}'")
+AttributeError: module 'torch' has no attribute 'uint16'
+ganesh@dknuth:~/repos/pytorch/issue-159333$ TOOL_VERBOSE=1 LD_PRELOAD=~/nixnan.so CUDA_VISIBLE_DEVICES=0 python run.py
+------------- NVBit (NVidia Binary Instrumentation Tool v1.7.5) Loaded --------------
+NVBit core environment variables (mostly for nvbit-devs):
+ACK_CTX_INIT_LIMITATION = 0 - if set, no warning will be printed for nvbit_at_ctx_init()
+            NVDISASM = nvdisasm - override default nvdisasm found in PATH
+            NOBANNER = 0 - if set, does not print this banner
+       NO_EAGER_LOAD = 0 - eager module loading is turned on by NVBit to prevent potential NVBit tool deadlock, turn it off if you want to use the lazy module loading feature
+---------------------------------------------------------------------------------
+         INSTR_BEGIN = 0 - Beginning of the instruction interval where to apply instrumentation
+           INSTR_END = 4294967295 - End of the instruction interval where to apply instrumentation
+        TOOL_VERBOSE = 1 - Enable verbosity inside the tool
+   ENABLE_FUN_DETAIL = 0 - Enable detailed function information for kernel
+     PRINT_ILL_INSTR = 0 - Print the instruction which caused the exception
+            SAMPLING = 0 - Instrument a repeat kernel every SAMPLING times
+           INSTR_MEM = 0 - Instrument memory instructions for NaN/Inf detection
+             LOGFILE =  - Path to the optional log file. Default is to print to stderr. This is useful for the case when an instrumented program is capturing stderr.
+           LINE_INFO = 0 - Enable debug information for source code locations. This may cause crashes, so set this to 0 if you encounter issues.
+#nixnan: ----------------------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ganesh/repos/pytorch/issue-159333/run.py", line 2, in <module>
+    a = torch.tensor([32763, 32764, 32765, 32766, 32767], dtype=torch.uint16, device='cuda').view(torch.bfloat16)
+  File "/home/ganesh/.local/lib/python3.10/site-packages/torch/__init__.py", line 1938, in __getattr__
+    raise AttributeError(f"module '{__name__}' has no attribute '{name}'")
+AttributeError: module 'torch' has no attribute 'uint16'
+ganesh@dknuth:~/repos/pytorch/issue-159333$ ls
+run.py	typescript  typescript-issue-open-159333.clean	typescript-issue-open-159333.raw  ty.script
+ganesh@dknuth:~/repos/pytorch/issue-159333$ 
+ganesh@dknuth:~/repos/pytorch/issue-159333$ python run1.py
+a=tensor([nan, 0., 0., 0., nan, 0., 0., 0., nan, 0., 0., 0., nan, 0., 0., 0., nan, 0., 0., 0.],
+       device='cuda:0', dtype=torch.bfloat16)
+b=tensor([nan, 0., 0., 0., nan, 0., 0., 0., nan, 0., 0., 0., nan, 0., 0., 0., nan, 0., 0., 0.],
+       device='cuda:0', dtype=torch.bfloat16)
+Traceback (most recent call last):
+  File "/home/ganesh/repos/pytorch/issue-159333/run1.py", line 8, in <module>
+    print(f'{a.view(torch.uint16)=}')
+  File "/home/ganesh/.local/lib/python3.10/site-packages/torch/__init__.py", line 1938, in __getattr__
+    raise AttributeError(f"module '{__name__}' has no attribute '{name}'")
+AttributeError: module 'torch' has no attribute 'uint16'
+ganesh@dknuth:~/repos/pytorch/issue-159333$ 
+ganesh@dknuth:~/repos/pytorch/issue-159333$ python run1.py
+a=tensor([nan, 0., 0., 0., nan, 0., 0., 0., nan, 0., 0., 0., nan, 0., 0., 0., nan, 0., 0., 0.],
+       device='cuda:0', dtype=torch.bfloat16)
+b=tensor([nan, 0., 0., 0., nan, 0., 0., 0., nan, 0., 0., 0., nan, 0., 0., 0., nan, 0., 0., 0.],
+       device='cuda:0', dtype=torch.bfloat16)
+ganesh@dknuth:~/repos/pytorch/issue-159333$ 
+ganesh@dknuth:~/repos/pytorch/issue-159333$ exit
+exit
+
+Script done on 2025-09-23 23:29:37-06:00 [COMMAND_EXIT_CODE="0"]

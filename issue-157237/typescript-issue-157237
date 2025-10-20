@@ -1,0 +1,63 @@
+Script started on 2025-07-15 10:08:31-06:00 [TERM="xterm-256color" TTY="/dev/pts/5" COLUMNS="160" LINES="32"]
+[?2004h]0;ganesh@dknuth: ~/repos/pytorch/issue-157237[01;32mganesh@dknuth[00m:[01;34m~/repos/pytorch/issue-157237[00m$ LD~[K_PRELOAD=~/nixnan.os[K[Kso python run-gpu.py
+[?2004l------------- NVBit (NVidia Binary Instrumentation Tool v1.7.2) Loaded --------------
+NVBit core environment variables (mostly for nvbit-devs):
+ACK_CTX_INIT_LIMITATION = 0 - if set, no warning will be printed for nvbit_at_ctx_init()
+            NVDISASM = nvdisasm - override default nvdisasm found in PATH
+            NOBANNER = 0 - if set, does not print this banner
+       NO_EAGER_LOAD = 0 - eager module loading is turned on by NVBit to prevent potential NVBit tool deadlock, turn it off if you want to use the lazy module loading feature
+---------------------------------------------------------------------------------
+         INSTR_BEGIN = 0 - Beginning of the instruction interval where to apply instrumentation
+           INSTR_END = 4294967295 - End of the instruction interval where to apply instrumentation
+        TOOL_VERBOSE = 0 - Enable verbosity inside the tool
+   ENABLE_FUN_DETAIL = 0 - Enable detailed function information for kernel
+     PRINT_ILL_INSTR = 0 - Print the instruction which caused the exception
+            SAMPLING = 0 - Instrument a repeat kernel every SAMPLING times
+----------------------------------------------------------------------------------
+WARNING: Do not call CUDA memory allocation in nvbit_at_ctx_init(). It will cause deadlocks. Do them in nvbit_tool_init(). If you encounter deadlocks, remove CUDA API calls to debug.
+#nixnan: Initializing GPU context...
+#nixnan: Could not open kernel_whitelist.txt!
+#nixnan: Could not open kernel_blacklist.txt!
+#nixnan: instrumenting all kernels
+#nixnan: running kernel [void at::native::vectorized_elementwise_kernel] ...
+#nixnan: running kernel [void at::native::unrolled_elementwise_kernel] ...
+#nixnan: running kernel [void at::native::reduce_kernel] ...
+Test sequence has 4 input NaNs.
+
+#nixnan: running kernel [void at::native::elementwise_kernel] ...
+#nixnan: running kernel [void cudnn::cnn::conv1D_NCHW_general] ...
+#nixnan: error [NaN] detected in operand 1 of instruction @!P0 FFMA R15, R10, R11, R15 ; in function void cudnn::cnn::conv1D_NCHW_general at line 0 of type f32
+#nixnan: error [NaN] detected in operand 0 of instruction @!P0 FFMA R15, R10, R11, R15 ; in function void cudnn::cnn::conv1D_NCHW_general at line 0 of type f32
+#nixnan: error [NaN] detected in operand 0 of instruction @!P1 FFMA R15, R10, R11, R15 ; in function void cudnn::cnn::conv1D_NCHW_general at line 0 of type f32
+#nixnan: error [NaN] detected in operand 0 of instruction @!P0 FFMA R15, R12, R13, R15 ; in function void cudnn::cnn::conv1D_NCHW_general at line 0 of type f32
+#nixnan: error [NaN] detected in operand 1 of instruction FMUL R5, R15, c[0x0][0x190] ; in function void cudnn::cnn::conv1D_NCHW_general at line 0 of type f32
+#nixnan: error [NaN] detected in operand 0 of instruction FMUL R5, R15, c[0x0][0x190] ; in function void cudnn::cnn::conv1D_NCHW_general at line 0 of type f32
+Batch Size: 4   -> Output NaNs for the sequence: 4
+Batch Size: 16  -> Output NaNs for the sequence: 4
+Batch Size: 32  -> Output NaNs for the sequence: 4
+#nixnan: Finalizing GPU context...
+
+#nixnan: ------------ nixnan Report -----------
+
+#nixnan: --- FP16 Operations ---
+#nixnan: NaN:           0
+#nixnan: Infinity:      0
+#nixnan: Subnormal:     0
+#nixnan: Division by 0: 0
+
+#nixnan: --- FP32 Operations ---
+#nixnan: NaN:           21
+#nixnan: Infinity:      0
+#nixnan: Subnormal:     0
+#nixnan: Division by 0: 0
+
+#nixnan: --- FP64 Operations ---
+#nixnan: NaN:           0
+#nixnan: Infinity:      0
+#nixnan: Subnormal:     0
+#nixnan: Division by 0: 0
+
+[?2004h]0;ganesh@dknuth: ~/repos/pytorch/issue-157237[01;32mganesh@dknuth[00m:[01;34m~/repos/pytorch/issue-157237[00m$  exit
+[?2004lexit
+
+Script done on 2025-07-15 10:10:14-06:00 [COMMAND_EXIT_CODE="0"]

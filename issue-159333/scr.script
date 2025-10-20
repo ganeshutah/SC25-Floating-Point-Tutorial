@@ -1,0 +1,1873 @@
+Script started on 2025-09-23 23:29:59-06:00 [TERM="dumb" TTY="/dev/pts/23" COLUMNS="121" LINES="18"]
+ganesh@dknuth:~/repos/pytorch/issue-159333$ TOOL_VERBOSE=1 LD_PRELOAD=~/nixnan.so CUDA_VISIBLE_DEVICES=0 python run1.py
+------------- NVBit (NVidia Binary Instrumentation Tool v1.7.5) Loaded --------------
+NVBit core environment variables (mostly for nvbit-devs):
+ACK_CTX_INIT_LIMITATION = 0 - if set, no warning will be printed for nvbit_at_ctx_init()
+            NVDISASM = nvdisasm - override default nvdisasm found in PATH
+            NOBANNER = 0 - if set, does not print this banner
+       NO_EAGER_LOAD = 0 - eager module loading is turned on by NVBit to prevent potential NVBit tool deadlock, turn it off if you want to use the lazy module loading feature
+---------------------------------------------------------------------------------
+         INSTR_BEGIN = 0 - Beginning of the instruction interval where to apply instrumentation
+           INSTR_END = 4294967295 - End of the instruction interval where to apply instrumentation
+        TOOL_VERBOSE = 1 - Enable verbosity inside the tool
+   ENABLE_FUN_DETAIL = 0 - Enable detailed function information for kernel
+     PRINT_ILL_INSTR = 0 - Print the instruction which caused the exception
+            SAMPLING = 0 - Instrument a repeat kernel every SAMPLING times
+           INSTR_MEM = 0 - Instrument memory instructions for NaN/Inf detection
+             LOGFILE =  - Path to the optional log file. Default is to print to stderr. This is useful for the case when an instrumented program is capturing stderr.
+           LINE_INFO = 0 - Enable debug information for source code locations. This may cause crashes, so set this to 0 if you encounter issues.
+#nixnan: ----------------------------------------------------------------------------------
+WARNING: Do not call CUDA memory allocation in nvbit_at_ctx_init(). It will cause deadlocks. Do them in nvbit_tool_init(). If you encounter deadlocks, remove CUDA API calls to debug.
+#nixnan: Initializing GPU context...
+#nixnan: Could not open kernel_whitelist.txt!
+#nixnan: Could not open kernel_blacklist.txt!
+#nixnan: Instrumenting all kernels
+#nixnan: Inspecting function void at::native::unrolled_elementwise_kernel<at::native::direct_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda()#3}::operator()() const::{lambda()#7}::operator()() const::{lambda(float)#1}, at::detail::Array<char*, 2>, TrivialOffsetCalculator<1, unsigned int>, TrivialOffsetCalculator<1, unsigned int>, at::native::memory::LoadWithCast<1>, at::native::memory::StoreWithCast<1> >(int, at::native::direct_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda()#3}::operator()() const::{lambda()#7}::operator()() const::{lambda(float)#1}, at::detail::Array<char*, 2>, TrivialOffsetCalculator<1, unsigned int>, TrivialOffsetCalculator<1, unsigned int>, at::native::memory::LoadWithCast<1>, at::native::memory::StoreWithCast<1>) at address 0x7406f2800000
+#nixnan: Instrumenting instruction @P0 FMUL R2, R2, 1.9259299443872358531e-34 ;
+#nixnan: Instrumenting instruction with 2 registers
+#nixnan: Instrumenting operand 0. div0: 0, regs: 1, count: 1
+#nixnan: Instrumenting instruction with 5 registers
+#nixnan: Instrumenting operand 1. div0: 0, regs: 1
+#nixnan: Instrumenting operand 2. div0: 0, regs: 2
+#nixnan: Instrumenting instruction @!P0 FADD R2, R0, -0.5 ;
+#nixnan: Instrumenting instruction with 2 registers
+#nixnan: Instrumenting operand 0. div0: 0, regs: 1, count: 1
+#nixnan: Instrumenting instruction with 5 registers
+#nixnan: Instrumenting operand 1. div0: 0, regs: 1
+#nixnan: Instrumenting operand 2. div0: 0, regs: 2
+#nixnan: Instrumenting instruction @P0 FMUL R16, R3, 1.9259299443872358531e-34 ;
+#nixnan: Instrumenting instruction with 2 registers
+#nixnan: Instrumenting operand 0. div0: 0, regs: 1, count: 1
+#nixnan: Instrumenting instruction with 5 registers
+#nixnan: Instrumenting operand 1. div0: 0, regs: 1
+#nixnan: Instrumenting operand 2. div0: 0, regs: 2
+#nixnan: Instrumenting instruction @!P0 FADD R16, R0, -0.5 ;
+#nixnan: Instrumenting instruction with 2 registers
+#nixnan: Instrumenting operand 0. div0: 0, regs: 1, count: 1
+#nixnan: Instrumenting instruction with 5 registers
+#nixnan: Instrumenting operand 1. div0: 0, regs: 1
+#nixnan: Instrumenting operand 2. div0: 0, regs: 2
+#nixnan: Instrumenting instruction @P0 FMUL R18, R3, 1.9259299443872358531e-34 ;
+#nixnan: Instrumenting instruction with 2 registers
+#nixnan: Instrumenting operand 0. div0: 0, regs: 1, count: 1
+#nixnan: Instrumenting instruction with 5 registers
+#nixnan: Instrumenting operand 1. div0: 0, regs: 1
+#nixnan: Instrumenting operand 2. div0: 0, regs: 2
+#nixnan: Instrumenting instruction @!P0 FADD R18, R0, -0.5 ;
+#nixnan: Instrumenting instruction with 2 registers
+#nixnan: Instrumenting operand 0. div0: 0, regs: 1, count: 1
+#nixnan: Instrumenting instruction with 5 registers
+#nixnan: Instrumenting operand 1. div0: 0, regs: 1
+#nixnan: Instrumenting operand 2. div0: 0, regs: 2
+#nixnan: Instrumenting instruction @P0 FMUL R22, R3, 1.9259299443872358531e-34 ;
+#nixnan: Instrumenting instruction with 2 registers
+#nixnan: Instrumenting operand 0. div0: 0, regs: 1, count: 1
+#nixnan: Instrumenting instruction with 5 registers
+#nixnan: Instrumenting operand 1. div0: 0, regs: 1
+#nixnan: Instrumenting operand 2. div0: 0, regs: 2
+#nixnan: Instrumenting instruction @!P0 FADD R22, R0, -0.5 ;
+#nixnan: Instrumenting instruction with 2 registers
+#nixnan: Instrumenting operand 0. div0: 0, regs: 1, count: 1
+#nixnan: Instrumenting instruction with 5 registers
+#nixnan: Instrumenting operand 1. div0: 0, regs: 1
+#nixnan: Instrumenting operand 2. div0: 0, regs: 2
+#nixnan: Instrumenting instruction STG.E.U8 [R8.64], R3 ;
+#nixnan: Unsupported store instruction: STG.E.U8
+#nixnan: Instrumenting instruction STG.E.U8 [R8.64], R5 ;
+#nixnan: Unsupported store instruction: STG.E.U8
+#nixnan: Instrumenting instruction STG.E [R8.64], R3 ;
+#nixnan: Instrumenting memory instruction: STG.E of width 32
+#nixnan: Skipping memory instruction of unknown type: STG.E
+#nixnan: Instrumenting instruction STG.E.U16 [R8.64], R3 ;
+#nixnan: Unsupported store instruction: STG.E.U16
+#nixnan: Instrumenting instruction STG.E.U16 [R8.64], R2 ;
+#nixnan: Unsupported store instruction: STG.E.U16
+#nixnan: Instrumenting instruction STG.E.64 [R8.64], R2 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R8.64], R2 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E [R8.64], R2 ;
+#nixnan: Instrumenting memory instruction: STG.E of width 32
+#nixnan: Skipping memory instruction of unknown type: STG.E
+#nixnan: Instrumenting instruction STG.E.64 [R8.64], R2 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E [R8.64], R3 ;
+#nixnan: Instrumenting memory instruction: STG.E of width 32
+#nixnan: Skipping memory instruction of unknown type: STG.E
+#nixnan: Instrumenting instruction STG.E.U8 [R8.64], R3 ;
+#nixnan: Unsupported store instruction: STG.E.U8
+#nixnan: Instrumenting instruction STG.E.128 [R8.64], R4 ;
+#nixnan: Instrumenting memory instruction: STG.E.128 of width 128
+#nixnan: Skipping memory instruction of unknown type: STG.E.128
+#nixnan: Instrumenting instruction @!P0 FADD R3, R4, 128 ;
+#nixnan: Instrumenting instruction with 2 registers
+#nixnan: Instrumenting operand 0. div0: 0, regs: 1, count: 1
+#nixnan: Instrumenting instruction with 2 registers
+#nixnan: Instrumenting operand 1. div0: 0, regs: 1
+#nixnan: Instrumenting instruction STG.E.U8 [R8.64], R3 ;
+#nixnan: Unsupported store instruction: STG.E.U8
+#nixnan: Instrumenting instruction STG.E.U16 [R8.64], R2 ;
+#nixnan: Unsupported store instruction: STG.E.U16
+#nixnan: Instrumenting instruction FADD R0, R4, 8192 ;
+#nixnan: Instrumenting instruction with 2 registers
+#nixnan: Instrumenting operand 0. div0: 0, regs: 1, count: 1
+#nixnan: Instrumenting instruction with 2 registers
+#nixnan: Instrumenting operand 1. div0: 0, regs: 1
+#nixnan: Instrumenting instruction STG.E.U8 [R8.64], R0 ;
+#nixnan: Unsupported store instruction: STG.E.U8
+#nixnan: Instrumenting instruction FADD R0, R4, 64 ;
+#nixnan: Instrumenting instruction with 2 registers
+#nixnan: Instrumenting operand 0. div0: 0, regs: 1, count: 1
+#nixnan: Instrumenting instruction with 2 registers
+#nixnan: Instrumenting operand 1. div0: 0, regs: 1
+#nixnan: Instrumenting instruction STG.E.U8 [R8.64], R0 ;
+#nixnan: Unsupported store instruction: STG.E.U8
+#nixnan: Instrumenting instruction @!P0 FADD R2, R3, 16384 ;
+#nixnan: Instrumenting instruction with 2 registers
+#nixnan: Instrumenting operand 0. div0: 0, regs: 1, count: 1
+#nixnan: Instrumenting instruction with 2 registers
+#nixnan: Instrumenting operand 1. div0: 0, regs: 1
+#nixnan: Instrumenting instruction STG.E.U8 [R8.64], R3 ;
+#nixnan: Unsupported store instruction: STG.E.U8
+#nixnan: Instrumenting instruction STG.E.U8 [R8.64], R3 ;
+#nixnan: Unsupported store instruction: STG.E.U8
+#nixnan: Instrumenting instruction STG.E.U8 [R8.64], R3 ;
+#nixnan: Unsupported store instruction: STG.E.U8
+#nixnan: Instrumenting instruction STG.E [R8.64], R3 ;
+#nixnan: Instrumenting memory instruction: STG.E of width 32
+#nixnan: Skipping memory instruction of unknown type: STG.E
+#nixnan: Instrumenting instruction STG.E.U16 [R8.64], R3 ;
+#nixnan: Unsupported store instruction: STG.E.U16
+#nixnan: Instrumenting instruction STG.E.U16 [R8.64], R16 ;
+#nixnan: Unsupported store instruction: STG.E.U16
+#nixnan: Instrumenting instruction STG.E.64 [R8.64], R16 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R8.64], R16 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E [R8.64], R16 ;
+#nixnan: Instrumenting memory instruction: STG.E of width 32
+#nixnan: Skipping memory instruction of unknown type: STG.E
+#nixnan: Instrumenting instruction STG.E.64 [R8.64], R16 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E [R8.64], R3 ;
+#nixnan: Instrumenting memory instruction: STG.E of width 32
+#nixnan: Skipping memory instruction of unknown type: STG.E
+#nixnan: Instrumenting instruction STG.E.U8 [R8.64], R3 ;
+#nixnan: Unsupported store instruction: STG.E.U8
+#nixnan: Instrumenting instruction STG.E.128 [R8.64], R4 ;
+#nixnan: Instrumenting memory instruction: STG.E.128 of width 128
+#nixnan: Skipping memory instruction of unknown type: STG.E.128
+#nixnan: Instrumenting instruction @!P0 FADD R3, R4, 128 ;
+#nixnan: Instrumenting instruction with 2 registers
+#nixnan: Instrumenting operand 0. div0: 0, regs: 1, count: 1
+#nixnan: Instrumenting instruction with 2 registers
+#nixnan: Instrumenting operand 1. div0: 0, regs: 1
+#nixnan: Instrumenting instruction STG.E.U8 [R8.64], R3 ;
+#nixnan: Unsupported store instruction: STG.E.U8
+#nixnan: Instrumenting instruction STG.E.U16 [R8.64], R16 ;
+#nixnan: Unsupported store instruction: STG.E.U16
+#nixnan: Instrumenting instruction FADD R0, R4, 8192 ;
+#nixnan: Instrumenting instruction with 2 registers
+#nixnan: Instrumenting operand 0. div0: 0, regs: 1, count: 1
+#nixnan: Instrumenting instruction with 2 registers
+#nixnan: Instrumenting operand 1. div0: 0, regs: 1
+#nixnan: Instrumenting instruction STG.E.U8 [R8.64], R0 ;
+#nixnan: Unsupported store instruction: STG.E.U8
+#nixnan: Instrumenting instruction FADD R0, R4, 64 ;
+#nixnan: Instrumenting instruction with 2 registers
+#nixnan: Instrumenting operand 0. div0: 0, regs: 1, count: 1
+#nixnan: Instrumenting instruction with 2 registers
+#nixnan: Instrumenting operand 1. div0: 0, regs: 1
+#nixnan: Instrumenting instruction STG.E.U8 [R8.64], R0 ;
+#nixnan: Unsupported store instruction: STG.E.U8
+#nixnan: Instrumenting instruction @!P0 FADD R3, R3, 16384 ;
+#nixnan: Instrumenting instruction with 2 registers
+#nixnan: Instrumenting operand 0. div0: 0, regs: 1, count: 1
+#nixnan: Instrumenting instruction with 2 registers
+#nixnan: Instrumenting operand 1. div0: 0, regs: 1
+#nixnan: Instrumenting instruction STG.E.U8 [R8.64], R3 ;
+#nixnan: Unsupported store instruction: STG.E.U8
+#nixnan: Instrumenting instruction STG.E.U8 [R4.64], R3 ;
+#nixnan: Unsupported store instruction: STG.E.U8
+#nixnan: Instrumenting instruction STG.E.U8 [R4.64], R3 ;
+#nixnan: Unsupported store instruction: STG.E.U8
+#nixnan: Instrumenting instruction STG.E [R4.64], R3 ;
+#nixnan: Instrumenting memory instruction: STG.E of width 32
+#nixnan: Skipping memory instruction of unknown type: STG.E
+#nixnan: Instrumenting instruction STG.E.U16 [R4.64], R3 ;
+#nixnan: Unsupported store instruction: STG.E.U16
+#nixnan: Instrumenting instruction STG.E.U16 [R4.64], R18 ;
+#nixnan: Unsupported store instruction: STG.E.U16
+#nixnan: Instrumenting instruction STG.E.64 [R4.64], R18 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R4.64], R18 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E [R4.64], R18 ;
+#nixnan: Instrumenting memory instruction: STG.E of width 32
+#nixnan: Skipping memory instruction of unknown type: STG.E
+#nixnan: Instrumenting instruction STG.E.64 [R4.64], R18 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E [R4.64], R3 ;
+#nixnan: Instrumenting memory instruction: STG.E of width 32
+#nixnan: Skipping memory instruction of unknown type: STG.E
+#nixnan: Instrumenting instruction STG.E.U8 [R4.64], R3 ;
+#nixnan: Unsupported store instruction: STG.E.U8
+#nixnan: Instrumenting instruction STG.E.128 [R4.64], R8 ;
+#nixnan: Instrumenting memory instruction: STG.E.128 of width 128
+#nixnan: Skipping memory instruction of unknown type: STG.E.128
+#nixnan: Instrumenting instruction @!P0 FADD R3, R6, 128 ;
+#nixnan: Instrumenting instruction with 2 registers
+#nixnan: Instrumenting operand 0. div0: 0, regs: 1, count: 1
+#nixnan: Instrumenting instruction with 2 registers
+#nixnan: Instrumenting operand 1. div0: 0, regs: 1
+#nixnan: Instrumenting instruction STG.E.U8 [R4.64], R3 ;
+#nixnan: Unsupported store instruction: STG.E.U8
+#nixnan: Instrumenting instruction STG.E.U16 [R4.64], R18 ;
+#nixnan: Unsupported store instruction: STG.E.U16
+#nixnan: Instrumenting instruction FADD R0, R6, 8192 ;
+#nixnan: Instrumenting instruction with 2 registers
+#nixnan: Instrumenting operand 0. div0: 0, regs: 1, count: 1
+#nixnan: Instrumenting instruction with 2 registers
+#nixnan: Instrumenting operand 1. div0: 0, regs: 1
+#nixnan: Instrumenting instruction STG.E.U8 [R4.64], R0 ;
+#nixnan: Unsupported store instruction: STG.E.U8
+#nixnan: Instrumenting instruction FADD R0, R6, 64 ;
+#nixnan: Instrumenting instruction with 2 registers
+#nixnan: Instrumenting operand 0. div0: 0, regs: 1, count: 1
+#nixnan: Instrumenting instruction with 2 registers
+#nixnan: Instrumenting operand 1. div0: 0, regs: 1
+#nixnan: Instrumenting instruction STG.E.U8 [R4.64], R0 ;
+#nixnan: Unsupported store instruction: STG.E.U8
+#nixnan: Instrumenting instruction @!P0 FADD R3, R3, 16384 ;
+#nixnan: Instrumenting instruction with 2 registers
+#nixnan: Instrumenting operand 0. div0: 0, regs: 1, count: 1
+#nixnan: Instrumenting instruction with 2 registers
+#nixnan: Instrumenting operand 1. div0: 0, regs: 1
+#nixnan: Instrumenting instruction STG.E.U8 [R4.64], R3 ;
+#nixnan: Unsupported store instruction: STG.E.U8
+#nixnan: Instrumenting instruction STG.E.U8 [R4.64], R3 ;
+#nixnan: Unsupported store instruction: STG.E.U8
+#nixnan: Instrumenting instruction STG.E.U8 [R4.64], R3 ;
+#nixnan: Unsupported store instruction: STG.E.U8
+#nixnan: Instrumenting instruction STG.E [R4.64], R3 ;
+#nixnan: Instrumenting memory instruction: STG.E of width 32
+#nixnan: Skipping memory instruction of unknown type: STG.E
+#nixnan: Instrumenting instruction STG.E.U16 [R4.64], R3 ;
+#nixnan: Unsupported store instruction: STG.E.U16
+#nixnan: Instrumenting instruction STG.E.U16 [R4.64], R22 ;
+#nixnan: Unsupported store instruction: STG.E.U16
+#nixnan: Instrumenting instruction STG.E.64 [R4.64], R22 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R4.64], R22 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E [R4.64], R22 ;
+#nixnan: Instrumenting memory instruction: STG.E of width 32
+#nixnan: Skipping memory instruction of unknown type: STG.E
+#nixnan: Instrumenting instruction STG.E.64 [R4.64], R22 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E [R4.64], R3 ;
+#nixnan: Instrumenting memory instruction: STG.E of width 32
+#nixnan: Skipping memory instruction of unknown type: STG.E
+#nixnan: Instrumenting instruction STG.E.U8 [R4.64], R3 ;
+#nixnan: Unsupported store instruction: STG.E.U8
+#nixnan: Instrumenting instruction STG.E.128 [R4.64], R8 ;
+#nixnan: Instrumenting memory instruction: STG.E.128 of width 128
+#nixnan: Skipping memory instruction of unknown type: STG.E.128
+#nixnan: Instrumenting instruction @!P0 FADD R2, R2, 128 ;
+#nixnan: Instrumenting instruction with 2 registers
+#nixnan: Instrumenting operand 0. div0: 0, regs: 1, count: 1
+#nixnan: Instrumenting instruction with 2 registers
+#nixnan: Instrumenting operand 1. div0: 0, regs: 1
+#nixnan: Instrumenting instruction STG.E.U8 [R4.64], R3 ;
+#nixnan: Unsupported store instruction: STG.E.U8
+#nixnan: Instrumenting instruction STG.E.U16 [R4.64], R22 ;
+#nixnan: Unsupported store instruction: STG.E.U16
+#nixnan: Instrumenting instruction FADD R0, R6, 8192 ;
+#nixnan: Instrumenting instruction with 2 registers
+#nixnan: Instrumenting operand 0. div0: 0, regs: 1, count: 1
+#nixnan: Instrumenting instruction with 2 registers
+#nixnan: Instrumenting operand 1. div0: 0, regs: 1
+#nixnan: Instrumenting instruction STG.E.U8 [R4.64], R0 ;
+#nixnan: Unsupported store instruction: STG.E.U8
+#nixnan: Instrumenting instruction FADD R0, R3, 64 ;
+#nixnan: Instrumenting instruction with 2 registers
+#nixnan: Instrumenting operand 0. div0: 0, regs: 1, count: 1
+#nixnan: Instrumenting instruction with 2 registers
+#nixnan: Instrumenting operand 1. div0: 0, regs: 1
+#nixnan: Instrumenting instruction STG.E.U8 [R4.64], R0 ;
+#nixnan: Unsupported store instruction: STG.E.U8
+#nixnan: Instrumenting instruction @!P0 FADD R2, R2, 16384 ;
+#nixnan: Instrumenting instruction with 2 registers
+#nixnan: Instrumenting operand 0. div0: 0, regs: 1, count: 1
+#nixnan: Instrumenting instruction with 2 registers
+#nixnan: Instrumenting operand 1. div0: 0, regs: 1
+#nixnan: Instrumenting instruction STG.E.U8 [R4.64], R3 ;
+#nixnan: Unsupported store instruction: STG.E.U8
+#nixnan: running kernel [void at::native::unrolled_elementwise_kernel] ...
+#nixnan: Inspecting function void at::native::vectorized_elementwise_kernel<4, at::native::AbsFunctor<float>, at::detail::Array<char*, 2> >(int, at::native::AbsFunctor<float>, at::detail::Array<char*, 2>) at address 0x7406f87e7600
+#nixnan: Instrumenting instruction FADD R8, |R8|, -RZ ;
+#nixnan: Instrumenting instruction with 2 registers
+#nixnan: Instrumenting operand 0. div0: 0, regs: 1, count: 1
+#nixnan: Instrumenting instruction with 4 registers
+#nixnan: Instrumenting operand 1. div0: 0, regs: 1
+#nixnan: Instrumenting operand 2. div0: 0, regs: 1
+#nixnan: Instrumenting instruction FADD R9, |R9|, -RZ ;
+#nixnan: Instrumenting instruction with 2 registers
+#nixnan: Instrumenting operand 0. div0: 0, regs: 1, count: 1
+#nixnan: Instrumenting instruction with 4 registers
+#nixnan: Instrumenting operand 1. div0: 0, regs: 1
+#nixnan: Instrumenting operand 2. div0: 0, regs: 1
+#nixnan: Instrumenting instruction FADD R10, |R10|, -RZ ;
+#nixnan: Instrumenting instruction with 2 registers
+#nixnan: Instrumenting operand 0. div0: 0, regs: 1, count: 1
+#nixnan: Instrumenting instruction with 4 registers
+#nixnan: Instrumenting operand 1. div0: 0, regs: 1
+#nixnan: Instrumenting operand 2. div0: 0, regs: 1
+#nixnan: Instrumenting instruction FADD R11, |R11|, -RZ ;
+#nixnan: Instrumenting instruction with 2 registers
+#nixnan: Instrumenting operand 0. div0: 0, regs: 1, count: 1
+#nixnan: Instrumenting instruction with 4 registers
+#nixnan: Instrumenting operand 1. div0: 0, regs: 1
+#nixnan: Instrumenting operand 2. div0: 0, regs: 1
+#nixnan: Instrumenting instruction STG.E.128 [R4.64], R8 ;
+#nixnan: Instrumenting memory instruction: STG.E.128 of width 128
+#nixnan: Found memory instruction of type: f32
+#nixnan: Instrumenting instruction FADD R7, |R10|, -RZ ;
+#nixnan: Instrumenting instruction with 2 registers
+#nixnan: Instrumenting operand 0. div0: 0, regs: 1, count: 1
+#nixnan: Instrumenting instruction with 4 registers
+#nixnan: Instrumenting operand 1. div0: 0, regs: 1
+#nixnan: Instrumenting operand 2. div0: 0, regs: 1
+#nixnan: Instrumenting instruction STG.E [R4.64], R7 ;
+#nixnan: Instrumenting memory instruction: STG.E of width 32
+#nixnan: Found memory instruction of type: f32
+#nixnan: Instrumenting instruction FADD R9, |R9|, -RZ ;
+#nixnan: Instrumenting instruction with 2 registers
+#nixnan: Instrumenting operand 0. div0: 0, regs: 1, count: 1
+#nixnan: Instrumenting instruction with 4 registers
+#nixnan: Instrumenting operand 1. div0: 0, regs: 1
+#nixnan: Instrumenting operand 2. div0: 0, regs: 1
+#nixnan: Instrumenting instruction STG.E [R4.64], R9 ;
+#nixnan: Instrumenting memory instruction: STG.E of width 32
+#nixnan: Found memory instruction of type: f32
+#nixnan: Instrumenting instruction FADD R3, |R8|, -RZ ;
+#nixnan: Instrumenting instruction with 2 registers
+#nixnan: Instrumenting operand 0. div0: 0, regs: 1, count: 1
+#nixnan: Instrumenting instruction with 4 registers
+#nixnan: Instrumenting operand 1. div0: 0, regs: 1
+#nixnan: Instrumenting operand 2. div0: 0, regs: 1
+#nixnan: Instrumenting instruction STG.E [R4.64], R3 ;
+#nixnan: Instrumenting memory instruction: STG.E of width 32
+#nixnan: Found memory instruction of type: f32
+#nixnan: Instrumenting instruction FADD R5, |R2|, -RZ ;
+#nixnan: Instrumenting instruction with 2 registers
+#nixnan: Instrumenting operand 0. div0: 0, regs: 1, count: 1
+#nixnan: Instrumenting instruction with 4 registers
+#nixnan: Instrumenting operand 1. div0: 0, regs: 1
+#nixnan: Instrumenting operand 2. div0: 0, regs: 1
+#nixnan: Instrumenting instruction STG.E [R2.64], R5 ;
+#nixnan: Instrumenting memory instruction: STG.E of width 32
+#nixnan: Found memory instruction of type: f32
+#nixnan: running kernel [void at::native::vectorized_elementwise_kernel] ...
+#nixnan: error [NaN] detected in operand 1 of instruction FADD R7, |R10|, -RZ ; in function void at::native::vectorized_elementwise_kernel at line 0 of type f32
+#nixnan: error [NaN] detected in operand 0 of instruction FADD R7, |R10|, -RZ ; in function void at::native::vectorized_elementwise_kernel at line 0 of type f32
+#nixnan: error [NaN] detected in operand 1 of instruction STG.E [R4.64], R7 ; in function void at::native::vectorized_elementwise_kernel at line 0 of type f32
+#nixnan: Inspecting function void at::native::vectorized_elementwise_kernel<4, at::native::AUnaryFunctor<float, float, bool, at::native::(anonymous namespace)::CompareEqFunctor<float> >, at::detail::Array<char*, 2> >(int, at::native::AUnaryFunctor<float, float, bool, at::native::(anonymous namespace)::CompareEqFunctor<float> >, at::detail::Array<char*, 2>) at address 0x7406e9e63d00
+#nixnan: Instrumenting instruction STG.E [R2.64], R5 ;
+#nixnan: Instrumenting memory instruction: STG.E of width 32
+#nixnan: Skipping memory instruction of unknown type: STG.E
+#nixnan: Instrumenting instruction STG.E.U8 [R4.64], R8 ;
+#nixnan: Unsupported store instruction: STG.E.U8
+#nixnan: Instrumenting instruction STG.E.U8 [R4.64], R7 ;
+#nixnan: Unsupported store instruction: STG.E.U8
+#nixnan: Instrumenting instruction STG.E.U8 [R4.64], R6 ;
+#nixnan: Unsupported store instruction: STG.E.U8
+#nixnan: Instrumenting instruction STG.E.U8 [R2.64], R0 ;
+#nixnan: Unsupported store instruction: STG.E.U8
+#nixnan: Inspecting function void at::native::vectorized_elementwise_kernel<4, at::native::BinaryFunctor<float, float, bool, at::native::(anonymous namespace)::CompareEqFunctor<float> >, at::detail::Array<char*, 3> >(int, at::native::BinaryFunctor<float, float, bool, at::native::(anonymous namespace)::CompareEqFunctor<float> >, at::detail::Array<char*, 3>) at address 0x7406e9e83c00
+#nixnan: Instrumenting instruction STG.E [R2.64], R5 ;
+#nixnan: Instrumenting memory instruction: STG.E of width 32
+#nixnan: Skipping memory instruction of unknown type: STG.E
+#nixnan: Instrumenting instruction STG.E.U8 [R4.64], R6 ;
+#nixnan: Unsupported store instruction: STG.E.U8
+#nixnan: Instrumenting instruction STG.E.U8 [R4.64], R8 ;
+#nixnan: Unsupported store instruction: STG.E.U8
+#nixnan: Instrumenting instruction STG.E.U8 [R4.64], R9 ;
+#nixnan: Unsupported store instruction: STG.E.U8
+#nixnan: Instrumenting instruction STG.E.U8 [R2.64], R0 ;
+#nixnan: Unsupported store instruction: STG.E.U8
+#nixnan: Inspecting function void at::native::vectorized_elementwise_kernel<4, at::native::BinaryFunctor<bool, bool, bool, at::native::binary_internal::MulFunctor<bool> >, at::detail::Array<char*, 3> >(int, at::native::BinaryFunctor<bool, bool, bool, at::native::binary_internal::MulFunctor<bool> >, at::detail::Array<char*, 3>) at address 0x7406f8ee5e00
+#nixnan: Instrumenting instruction STG.E [R2.64], R5 ;
+#nixnan: Instrumenting memory instruction: STG.E of width 32
+#nixnan: Skipping memory instruction of unknown type: STG.E
+#nixnan: Instrumenting instruction STG.E.U8 [R8.64], R11 ;
+#nixnan: Unsupported store instruction: STG.E.U8
+#nixnan: Instrumenting instruction STG.E.U8 [R4.64], R9 ;
+#nixnan: Unsupported store instruction: STG.E.U8
+#nixnan: Instrumenting instruction STG.E.U8 [R4.64], R3 ;
+#nixnan: Unsupported store instruction: STG.E.U8
+#nixnan: Instrumenting instruction STG.E.U8 [R2.64], R5 ;
+#nixnan: Unsupported store instruction: STG.E.U8
+#nixnan: Inspecting function void at::native::vectorized_elementwise_kernel<4, at::native::BinaryFunctor<bool, bool, bool, at::native::BitwiseAndFunctor<bool> >, at::detail::Array<char*, 3> >(int, at::native::BinaryFunctor<bool, bool, bool, at::native::BitwiseAndFunctor<bool> >, at::detail::Array<char*, 3>) at address 0x7406def9ec00
+#nixnan: Instrumenting instruction STG.E [R2.64], R5 ;
+#nixnan: Instrumenting memory instruction: STG.E of width 32
+#nixnan: Skipping memory instruction of unknown type: STG.E
+#nixnan: Instrumenting instruction STG.E.U8 [R8.64], R11 ;
+#nixnan: Unsupported store instruction: STG.E.U8
+#nixnan: Instrumenting instruction STG.E.U8 [R4.64], R9 ;
+#nixnan: Unsupported store instruction: STG.E.U8
+#nixnan: Instrumenting instruction STG.E.U8 [R4.64], R3 ;
+#nixnan: Unsupported store instruction: STG.E.U8
+#nixnan: Instrumenting instruction STG.E.U8 [R2.64], R5 ;
+#nixnan: Unsupported store instruction: STG.E.U8
+#nixnan: Inspecting function void at_cuda_detail::cub::DeviceReduceSingleTileKernel<at_cuda_detail::cub::DeviceReducePolicy<int, int, at_cuda_detail::cub::Sum>::Policy600, at_cuda_detail::cub::TransformInputIterator<bool, at::native::(anonymous namespace)::NonZeroOp<bool>, bool const*, long>, int*, int, at_cuda_detail::cub::Sum, int, int>(at_cuda_detail::cub::TransformInputIterator<bool, at::native::(anonymous namespace)::NonZeroOp<bool>, bool const*, long>, int*, int, at_cuda_detail::cub::Sum, int) at address 0x7406f7426b00
+#nixnan: Instrumenting instruction STG.E [R2.64], R5 ;
+#nixnan: Instrumenting memory instruction: STG.E of width 32
+#nixnan: Skipping memory instruction of unknown type: STG.E
+#nixnan: Instrumenting instruction STG.E [R2.64], R5 ;
+#nixnan: Instrumenting memory instruction: STG.E of width 32
+#nixnan: Skipping memory instruction of unknown type: STG.E
+#nixnan: running kernel [void at_cuda_detail::cub::DeviceReduceSingleTileKernel] ...
+#nixnan: Inspecting function void at_cuda_detail::cub::DeviceCompactInitKernel<at_cuda_detail::cub::ScanTileState<int, true>, int*>(at_cuda_detail::cub::ScanTileState<int, true>, int, int*) at address 0x7406f6fff400
+#nixnan: Instrumenting instruction @!P1 STG.E.64 [R2.64], R6 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction @!P0 STG.E.64 [R4.64], RZ ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E [R2.64], RZ ;
+#nixnan: Instrumenting memory instruction: STG.E of width 32
+#nixnan: Skipping memory instruction of unknown type: STG.E
+#nixnan: running kernel [void at_cuda_detail::cub::DeviceCompactInitKernel] ...
+#nixnan: Inspecting function void at_cuda_detail::cub::DeviceSelectSweepKernel<at_cuda_detail::cub::DispatchSelectIf<at_cuda_detail::cub::CountingInputIterator<long, long>, at_cuda_detail::cub::TransformInputIterator<bool, at::native::(anonymous namespace)::NonZeroOp<bool>, bool const*, long>, long*, int*, at_cuda_detail::cub::NullType, at_cuda_detail::cub::NullType, int, false, false>::PtxSelectIfPolicyT, at_cuda_detail::cub::CountingInputIterator<long, long>, at_cuda_detail::cub::TransformInputIterator<bool, at::native::(anonymous namespace)::NonZeroOp<bool>, bool const*, long>, long*, int*, at_cuda_detail::cub::ScanTileState<int, true>, at_cuda_detail::cub::NullType, at_cuda_detail::cub::NullType, int, false>(at_cuda_detail::cub::CountingInputIterator<long, long>, at_cuda_detail::cub::TransformInputIterator<bool, at::native::(anonymous namespace)::NonZeroOp<bool>, bool const*, long>, long*, int*, at_cuda_detail::cub::ScanTileState<int, true>, at_cuda_detail::cub::NullType, at_cuda_detail::cub::NullType, int, int) at address 0x7406f741cf00
+#nixnan: Instrumenting instruction @!P2 STG.E.64 [R20.64], R16 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction @!P0 STG.E.64 [R18.64], R12 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction @!P1 STG.E.64 [R2.64], R14 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction @!P3 STG.E.64 [R4.64], R22 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R10.64], R2 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R10.64], R2 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64+-0x800], R10 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64+-0x400], R12 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64], R14 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64+0x400], R16 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64+0x800], R18 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64+0xc00], R20 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64+0x1000], R22 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64+0x1400], R24 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64+0x1800], R28 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64+0x1c00], R30 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64+0x2000], R32 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64+0x2400], R10 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64+0x2800], R12 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64+0x2c00], R14 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64+0x3000], R34 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64+0x3400], R36 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64+-0x800], R10 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64+-0x400], R12 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64], R14 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64+0x400], R16 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64+0x800], R18 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64+0xc00], R20 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64+0x1000], R22 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64+0x1400], R24 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64+-0x800], R4 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64+-0x400], R6 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64], R10 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64+0x400], R12 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction @!P1 STG.E.64 [R10.64], R12 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction @!P2 STG.E.64 [R4.64], R14 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction @!P3 STG.E.64 [R6.64], R18 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction @!P4 STG.E.64 [R2.64], R20 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64], R4 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R6.64], R2 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64+-0x800], R6 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64+-0x400], R10 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64], R12 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64+0x400], R14 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64+0x800], R16 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64+0xc00], R18 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64+0x1000], R20 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64+0x1400], R22 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64+0x1800], R24 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64+0x1c00], R28 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64+0x2000], R30 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64+0x2400], R6 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64+0x2800], R10 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64+0x2c00], R12 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64+0x3000], R32 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64+0x3400], R34 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64+-0x800], R6 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64+-0x400], R10 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64], R12 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64+0x400], R14 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64+0x800], R16 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64+0xc00], R18 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64+0x1000], R20 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64+0x1400], R22 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction @P0 STG.E.64 [R2.64+-0x800], R4 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction @P0 STG.E.64 [R2.64+-0x400], R6 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction @P0 STG.E.64 [R2.64], R10 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction @P0 STG.E.64 [R2.64+0x400], R12 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E [R2.64], R9 ;
+#nixnan: Instrumenting memory instruction: STG.E of width 32
+#nixnan: Skipping memory instruction of unknown type: STG.E
+#nixnan: Instrumenting instruction @P0 STG.E.64 [R2.64], R6 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction @P1 STG.E.64 [R10.64], R8 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction @P2 STG.E.64 [R14.64], R12 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction @P3 STG.E.64 [R20.64], R16 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64], R18 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R4.64], R2 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64+-0x800], R4 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64+-0x400], R6 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64], R8 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64+0x400], R12 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64+0x800], R14 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64+0xc00], R16 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64+0x1000], R18 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64+0x1400], R20 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64+0x1800], R22 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64+0x1c00], R24 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64+0x2000], R26 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64+0x2400], R28 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64+0x2800], R4 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64+0x2c00], R6 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64+0x3000], R30 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64+0x3400], R32 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64+-0x800], R4 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64+-0x400], R6 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64], R8 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64+0x400], R12 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64+0x800], R14 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64+0xc00], R16 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64+0x1000], R18 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64+0x1400], R20 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64+-0x800], R4 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64+-0x400], R6 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64], R8 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64+0x400], R10 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction @P0 STG.E.64 [R2.64], R6 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction @P1 STG.E.64 [R4.64], R8 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction @P2 STG.E.64 [R10.64], R12 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction @P3 STG.E.64 [R14.64], R16 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64], R18 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R6.64], R4 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R4.64+-0x800], R6 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R4.64+-0x400], R8 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R4.64], R12 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R4.64+0x400], R14 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R4.64+0x800], R16 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R4.64+0xc00], R18 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R4.64+0x1000], R20 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R4.64+0x1400], R22 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R4.64+0x1800], R24 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R4.64+0x1c00], R26 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R4.64+0x2000], R28 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R4.64+0x2400], R30 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R4.64+0x2800], R6 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R4.64+0x2c00], R8 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R4.64+0x3000], R32 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R4.64+0x3400], R34 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R4.64+-0x800], R6 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R4.64+-0x400], R8 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R4.64], R12 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R4.64+0x400], R14 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R4.64+0x800], R16 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R4.64+0xc00], R18 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R4.64+0x1000], R20 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R4.64+0x1400], R22 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R4.64+-0x800], R2 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R4.64+-0x400], R6 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R4.64], R8 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R4.64+0x400], R10 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: running kernel [void at_cuda_detail::cub::DeviceSelectSweepKernel] ...
+a=tensor([nan, 0., 0., 0., nan, 0., 0., 0., nan, 0., 0., 0., nan, 0., 0., 0., nan, 0., 0., 0.],
+       device='cuda:0', dtype=torch.bfloat16)
+#nixnan: Inspecting function void at::native::vectorized_elementwise_kernel<4, at::native::FillFunctor<c10::BFloat16>, at::detail::Array<char*, 1> >(int, at::native::FillFunctor<c10::BFloat16>, at::detail::Array<char*, 1>) at address 0x7406e5974700
+#nixnan: Instrumenting instruction STG.E.64 [R2.64], R4 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.U16 [R2.64], R13 ;
+#nixnan: Unsupported store instruction: STG.E.U16
+#nixnan: Instrumenting instruction STG.E.U16 [R2.64], R13 ;
+#nixnan: Unsupported store instruction: STG.E.U16
+#nixnan: Instrumenting instruction STG.E.U16 [R2.64], R13 ;
+#nixnan: Unsupported store instruction: STG.E.U16
+#nixnan: Instrumenting instruction STG.E.U16 [R2.64], R13 ;
+#nixnan: Unsupported store instruction: STG.E.U16
+#nixnan: Inspecting function void at::native::(anonymous namespace)::multi_tensor_apply_kernel<at::native::(anonymous namespace)::TensorListMetadata<2>, at::native::(anonymous namespace)::UnaryOpFunctor<c10::BFloat16, 2, 1, 1>, at::native::Identity<float> >(at::native::(anonymous namespace)::TensorListMetadata<2>, at::native::(anonymous namespace)::UnaryOpFunctor<c10::BFloat16, 2, 1, 1>, at::native::Identity<float>) at address 0x7406f8cb2600
+#nixnan: Instrumenting instruction @P1 STG.E.U16 [R8.64], R30 ;
+#nixnan: Unsupported store instruction: STG.E.U16
+#nixnan: Instrumenting instruction @P5 STG.E.U16 [R10.64], R28 ;
+#nixnan: Unsupported store instruction: STG.E.U16
+#nixnan: Instrumenting instruction @P0 STG.E.U16 [R12.64], R24 ;
+#nixnan: Unsupported store instruction: STG.E.U16
+#nixnan: Instrumenting instruction @P2 STG.E.U16 [R6.64], R26 ;
+#nixnan: Unsupported store instruction: STG.E.U16
+#nixnan: Instrumenting instruction STG.E.64 [R8.64], R12 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: running kernel [void at::native::] ...
+b=tensor([nan, 0., 0., 0., nan, 0., 0., 0., nan, 0., 0., 0., nan, 0., 0., 0., nan, 0., 0., 0.],
+       device='cuda:0', dtype=torch.bfloat16)
+#nixnan: Finalizing GPU context...
+
+#nixnan: ------------ nixnan Report -----------
+
+#nixnan: --- FP16 Operations ---
+#nixnan: NaN:                    0 (0 repeats)
+#nixnan: Infinity:               0 (0 repeats)
+#nixnan: -Infinity:              0 (0 repeats)
+#nixnan: Subnormal:              0 (0 repeats)
+#nixnan: Division by 0:          0 (0 repeats)
+
+#nixnan: --- BF16 Operations ---
+#nixnan: NaN:                    0 (0 repeats)
+#nixnan: Infinity:               0 (0 repeats)
+#nixnan: -Infinity:              0 (0 repeats)
+#nixnan: Subnormal:              0 (0 repeats)
+#nixnan: Division by 0:          0 (0 repeats)
+
+#nixnan: --- FP32 Operations ---
+#nixnan: NaN:                    2 (2 repeats)
+#nixnan: Infinity:               0 (0 repeats)
+#nixnan: -Infinity:              0 (0 repeats)
+#nixnan: Subnormal:              0 (0 repeats)
+#nixnan: Division by 0:          0 (0 repeats)
+
+#nixnan: --- FP64 Operations ---
+#nixnan: NaN:                    0 (0 repeats)
+#nixnan: Infinity:               0 (0 repeats)
+#nixnan: -Infinity:              0 (0 repeats)
+#nixnan: Subnormal:              0 (0 repeats)
+#nixnan: Division by 0:          0 (0 repeats)
+
+#nixnan: --- FP16 Memory  Operations ---
+#nixnan: NaN:                    0 (0 repeats)
+#nixnan: --- BF16 Memory  Operations ---
+#nixnan: NaN:                    0 (0 repeats)
+#nixnan: --- FP32 Memory  Operations ---
+#nixnan: NaN:                    1 (1 repeats)
+#nixnan: --- FP64 Memory  Operations ---
+#nixnan: NaN:                    0 (0 repeats)
+ganesh@dknuth:~/repos/pytorch/issue-159333$ TOOL_VERBOSE=1 LD_PRELOAD=~/nixnan.so CUDA_VISIBLE_DEVICES=1 python run1.py
+------------- NVBit (NVidia Binary Instrumentation Tool v1.7.5) Loaded --------------
+NVBit core environment variables (mostly for nvbit-devs):
+ACK_CTX_INIT_LIMITATION = 0 - if set, no warning will be printed for nvbit_at_ctx_init()
+            NVDISASM = nvdisasm - override default nvdisasm found in PATH
+            NOBANNER = 0 - if set, does not print this banner
+       NO_EAGER_LOAD = 0 - eager module loading is turned on by NVBit to prevent potential NVBit tool deadlock, turn it off if you want to use the lazy module loading feature
+---------------------------------------------------------------------------------
+         INSTR_BEGIN = 0 - Beginning of the instruction interval where to apply instrumentation
+           INSTR_END = 4294967295 - End of the instruction interval where to apply instrumentation
+        TOOL_VERBOSE = 1 - Enable verbosity inside the tool
+   ENABLE_FUN_DETAIL = 0 - Enable detailed function information for kernel
+     PRINT_ILL_INSTR = 0 - Print the instruction which caused the exception
+            SAMPLING = 0 - Instrument a repeat kernel every SAMPLING times
+           INSTR_MEM = 0 - Instrument memory instructions for NaN/Inf detection
+             LOGFILE =  - Path to the optional log file. Default is to print to stderr. This is useful for the case when an instrumented program is capturing stderr.
+           LINE_INFO = 0 - Enable debug information for source code locations. This may cause crashes, so set this to 0 if you encounter issues.
+#nixnan: ----------------------------------------------------------------------------------
+WARNING: Do not call CUDA memory allocation in nvbit_at_ctx_init(). It will cause deadlocks. Do them in nvbit_tool_init(). If you encounter deadlocks, remove CUDA API calls to debug.
+#nixnan: Initializing GPU context...
+#nixnan: Could not open kernel_whitelist.txt!
+#nixnan: Could not open kernel_blacklist.txt!
+#nixnan: Instrumenting all kernels
+#nixnan: Inspecting function void at::native::unrolled_elementwise_kernel<at::native::direct_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda()#3}::operator()() const::{lambda()#7}::operator()() const::{lambda(float)#1}, at::detail::Array<char*, 2>, TrivialOffsetCalculator<1, unsigned int>, TrivialOffsetCalculator<1, unsigned int>, at::native::memory::LoadWithCast<1>, at::native::memory::StoreWithCast<1> >(int, at::native::direct_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda()#3}::operator()() const::{lambda()#7}::operator()() const::{lambda(float)#1}, at::detail::Array<char*, 2>, TrivialOffsetCalculator<1, unsigned int>, TrivialOffsetCalculator<1, unsigned int>, at::native::memory::LoadWithCast<1>, at::native::memory::StoreWithCast<1>) at address 0x7813fb8e9600
+#nixnan: Instrumenting instruction @P0 FMUL R2, R2, 1.9259299443872358531e-34 ;
+#nixnan: Instrumenting instruction with 2 registers
+#nixnan: Instrumenting operand 0. div0: 0, regs: 1, count: 1
+#nixnan: Instrumenting instruction with 5 registers
+#nixnan: Instrumenting operand 1. div0: 0, regs: 1
+#nixnan: Instrumenting operand 2. div0: 0, regs: 2
+#nixnan: Instrumenting instruction @!P0 FADD R2, R0, -0.5 ;
+#nixnan: Instrumenting instruction with 2 registers
+#nixnan: Instrumenting operand 0. div0: 0, regs: 1, count: 1
+#nixnan: Instrumenting instruction with 5 registers
+#nixnan: Instrumenting operand 1. div0: 0, regs: 1
+#nixnan: Instrumenting operand 2. div0: 0, regs: 2
+#nixnan: Instrumenting instruction @P0 FMUL R16, R3, 1.9259299443872358531e-34 ;
+#nixnan: Instrumenting instruction with 2 registers
+#nixnan: Instrumenting operand 0. div0: 0, regs: 1, count: 1
+#nixnan: Instrumenting instruction with 5 registers
+#nixnan: Instrumenting operand 1. div0: 0, regs: 1
+#nixnan: Instrumenting operand 2. div0: 0, regs: 2
+#nixnan: Instrumenting instruction @!P0 FADD R16, R0, -0.5 ;
+#nixnan: Instrumenting instruction with 2 registers
+#nixnan: Instrumenting operand 0. div0: 0, regs: 1, count: 1
+#nixnan: Instrumenting instruction with 5 registers
+#nixnan: Instrumenting operand 1. div0: 0, regs: 1
+#nixnan: Instrumenting operand 2. div0: 0, regs: 2
+#nixnan: Instrumenting instruction @P0 FMUL R18, R3, 1.9259299443872358531e-34 ;
+#nixnan: Instrumenting instruction with 2 registers
+#nixnan: Instrumenting operand 0. div0: 0, regs: 1, count: 1
+#nixnan: Instrumenting instruction with 5 registers
+#nixnan: Instrumenting operand 1. div0: 0, regs: 1
+#nixnan: Instrumenting operand 2. div0: 0, regs: 2
+#nixnan: Instrumenting instruction @!P0 FADD R18, R0, -0.5 ;
+#nixnan: Instrumenting instruction with 2 registers
+#nixnan: Instrumenting operand 0. div0: 0, regs: 1, count: 1
+#nixnan: Instrumenting instruction with 5 registers
+#nixnan: Instrumenting operand 1. div0: 0, regs: 1
+#nixnan: Instrumenting operand 2. div0: 0, regs: 2
+#nixnan: Instrumenting instruction @P0 FMUL R22, R3, 1.9259299443872358531e-34 ;
+#nixnan: Instrumenting instruction with 2 registers
+#nixnan: Instrumenting operand 0. div0: 0, regs: 1, count: 1
+#nixnan: Instrumenting instruction with 5 registers
+#nixnan: Instrumenting operand 1. div0: 0, regs: 1
+#nixnan: Instrumenting operand 2. div0: 0, regs: 2
+#nixnan: Instrumenting instruction @!P0 FADD R22, R0, -0.5 ;
+#nixnan: Instrumenting instruction with 2 registers
+#nixnan: Instrumenting operand 0. div0: 0, regs: 1, count: 1
+#nixnan: Instrumenting instruction with 5 registers
+#nixnan: Instrumenting operand 1. div0: 0, regs: 1
+#nixnan: Instrumenting operand 2. div0: 0, regs: 2
+#nixnan: Instrumenting instruction STG.E.U8 [R8.64], R3 ;
+#nixnan: Unsupported store instruction: STG.E.U8
+#nixnan: Instrumenting instruction STG.E.U8 [R8.64], R5 ;
+#nixnan: Unsupported store instruction: STG.E.U8
+#nixnan: Instrumenting instruction STG.E [R8.64], R3 ;
+#nixnan: Instrumenting memory instruction: STG.E of width 32
+#nixnan: Skipping memory instruction of unknown type: STG.E
+#nixnan: Instrumenting instruction STG.E.U16 [R8.64], R3 ;
+#nixnan: Unsupported store instruction: STG.E.U16
+#nixnan: Instrumenting instruction STG.E.U16 [R8.64], R2 ;
+#nixnan: Unsupported store instruction: STG.E.U16
+#nixnan: Instrumenting instruction STG.E.64 [R8.64], R2 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R8.64], R2 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E [R8.64], R2 ;
+#nixnan: Instrumenting memory instruction: STG.E of width 32
+#nixnan: Skipping memory instruction of unknown type: STG.E
+#nixnan: Instrumenting instruction STG.E.64 [R8.64], R2 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E [R8.64], R3 ;
+#nixnan: Instrumenting memory instruction: STG.E of width 32
+#nixnan: Skipping memory instruction of unknown type: STG.E
+#nixnan: Instrumenting instruction STG.E.U8 [R8.64], R3 ;
+#nixnan: Unsupported store instruction: STG.E.U8
+#nixnan: Instrumenting instruction STG.E.128 [R8.64], R4 ;
+#nixnan: Instrumenting memory instruction: STG.E.128 of width 128
+#nixnan: Skipping memory instruction of unknown type: STG.E.128
+#nixnan: Instrumenting instruction @!P0 FADD R3, R4, 128 ;
+#nixnan: Instrumenting instruction with 2 registers
+#nixnan: Instrumenting operand 0. div0: 0, regs: 1, count: 1
+#nixnan: Instrumenting instruction with 2 registers
+#nixnan: Instrumenting operand 1. div0: 0, regs: 1
+#nixnan: Instrumenting instruction STG.E.U8 [R8.64], R3 ;
+#nixnan: Unsupported store instruction: STG.E.U8
+#nixnan: Instrumenting instruction STG.E.U16 [R8.64], R2 ;
+#nixnan: Unsupported store instruction: STG.E.U16
+#nixnan: Instrumenting instruction FADD R0, R4, 8192 ;
+#nixnan: Instrumenting instruction with 2 registers
+#nixnan: Instrumenting operand 0. div0: 0, regs: 1, count: 1
+#nixnan: Instrumenting instruction with 2 registers
+#nixnan: Instrumenting operand 1. div0: 0, regs: 1
+#nixnan: Instrumenting instruction STG.E.U8 [R8.64], R0 ;
+#nixnan: Unsupported store instruction: STG.E.U8
+#nixnan: Instrumenting instruction FADD R0, R4, 64 ;
+#nixnan: Instrumenting instruction with 2 registers
+#nixnan: Instrumenting operand 0. div0: 0, regs: 1, count: 1
+#nixnan: Instrumenting instruction with 2 registers
+#nixnan: Instrumenting operand 1. div0: 0, regs: 1
+#nixnan: Instrumenting instruction STG.E.U8 [R8.64], R0 ;
+#nixnan: Unsupported store instruction: STG.E.U8
+#nixnan: Instrumenting instruction @!P0 FADD R2, R3, 16384 ;
+#nixnan: Instrumenting instruction with 2 registers
+#nixnan: Instrumenting operand 0. div0: 0, regs: 1, count: 1
+#nixnan: Instrumenting instruction with 2 registers
+#nixnan: Instrumenting operand 1. div0: 0, regs: 1
+#nixnan: Instrumenting instruction STG.E.U8 [R8.64], R3 ;
+#nixnan: Unsupported store instruction: STG.E.U8
+#nixnan: Instrumenting instruction STG.E.U8 [R8.64], R3 ;
+#nixnan: Unsupported store instruction: STG.E.U8
+#nixnan: Instrumenting instruction STG.E.U8 [R8.64], R3 ;
+#nixnan: Unsupported store instruction: STG.E.U8
+#nixnan: Instrumenting instruction STG.E [R8.64], R3 ;
+#nixnan: Instrumenting memory instruction: STG.E of width 32
+#nixnan: Skipping memory instruction of unknown type: STG.E
+#nixnan: Instrumenting instruction STG.E.U16 [R8.64], R3 ;
+#nixnan: Unsupported store instruction: STG.E.U16
+#nixnan: Instrumenting instruction STG.E.U16 [R8.64], R16 ;
+#nixnan: Unsupported store instruction: STG.E.U16
+#nixnan: Instrumenting instruction STG.E.64 [R8.64], R16 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R8.64], R16 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E [R8.64], R16 ;
+#nixnan: Instrumenting memory instruction: STG.E of width 32
+#nixnan: Skipping memory instruction of unknown type: STG.E
+#nixnan: Instrumenting instruction STG.E.64 [R8.64], R16 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E [R8.64], R3 ;
+#nixnan: Instrumenting memory instruction: STG.E of width 32
+#nixnan: Skipping memory instruction of unknown type: STG.E
+#nixnan: Instrumenting instruction STG.E.U8 [R8.64], R3 ;
+#nixnan: Unsupported store instruction: STG.E.U8
+#nixnan: Instrumenting instruction STG.E.128 [R8.64], R4 ;
+#nixnan: Instrumenting memory instruction: STG.E.128 of width 128
+#nixnan: Skipping memory instruction of unknown type: STG.E.128
+#nixnan: Instrumenting instruction @!P0 FADD R3, R4, 128 ;
+#nixnan: Instrumenting instruction with 2 registers
+#nixnan: Instrumenting operand 0. div0: 0, regs: 1, count: 1
+#nixnan: Instrumenting instruction with 2 registers
+#nixnan: Instrumenting operand 1. div0: 0, regs: 1
+#nixnan: Instrumenting instruction STG.E.U8 [R8.64], R3 ;
+#nixnan: Unsupported store instruction: STG.E.U8
+#nixnan: Instrumenting instruction STG.E.U16 [R8.64], R16 ;
+#nixnan: Unsupported store instruction: STG.E.U16
+#nixnan: Instrumenting instruction FADD R0, R4, 8192 ;
+#nixnan: Instrumenting instruction with 2 registers
+#nixnan: Instrumenting operand 0. div0: 0, regs: 1, count: 1
+#nixnan: Instrumenting instruction with 2 registers
+#nixnan: Instrumenting operand 1. div0: 0, regs: 1
+#nixnan: Instrumenting instruction STG.E.U8 [R8.64], R0 ;
+#nixnan: Unsupported store instruction: STG.E.U8
+#nixnan: Instrumenting instruction FADD R0, R4, 64 ;
+#nixnan: Instrumenting instruction with 2 registers
+#nixnan: Instrumenting operand 0. div0: 0, regs: 1, count: 1
+#nixnan: Instrumenting instruction with 2 registers
+#nixnan: Instrumenting operand 1. div0: 0, regs: 1
+#nixnan: Instrumenting instruction STG.E.U8 [R8.64], R0 ;
+#nixnan: Unsupported store instruction: STG.E.U8
+#nixnan: Instrumenting instruction @!P0 FADD R3, R3, 16384 ;
+#nixnan: Instrumenting instruction with 2 registers
+#nixnan: Instrumenting operand 0. div0: 0, regs: 1, count: 1
+#nixnan: Instrumenting instruction with 2 registers
+#nixnan: Instrumenting operand 1. div0: 0, regs: 1
+#nixnan: Instrumenting instruction STG.E.U8 [R8.64], R3 ;
+#nixnan: Unsupported store instruction: STG.E.U8
+#nixnan: Instrumenting instruction STG.E.U8 [R4.64], R3 ;
+#nixnan: Unsupported store instruction: STG.E.U8
+#nixnan: Instrumenting instruction STG.E.U8 [R4.64], R3 ;
+#nixnan: Unsupported store instruction: STG.E.U8
+#nixnan: Instrumenting instruction STG.E [R4.64], R3 ;
+#nixnan: Instrumenting memory instruction: STG.E of width 32
+#nixnan: Skipping memory instruction of unknown type: STG.E
+#nixnan: Instrumenting instruction STG.E.U16 [R4.64], R3 ;
+#nixnan: Unsupported store instruction: STG.E.U16
+#nixnan: Instrumenting instruction STG.E.U16 [R4.64], R18 ;
+#nixnan: Unsupported store instruction: STG.E.U16
+#nixnan: Instrumenting instruction STG.E.64 [R4.64], R18 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R4.64], R18 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E [R4.64], R18 ;
+#nixnan: Instrumenting memory instruction: STG.E of width 32
+#nixnan: Skipping memory instruction of unknown type: STG.E
+#nixnan: Instrumenting instruction STG.E.64 [R4.64], R18 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E [R4.64], R3 ;
+#nixnan: Instrumenting memory instruction: STG.E of width 32
+#nixnan: Skipping memory instruction of unknown type: STG.E
+#nixnan: Instrumenting instruction STG.E.U8 [R4.64], R3 ;
+#nixnan: Unsupported store instruction: STG.E.U8
+#nixnan: Instrumenting instruction STG.E.128 [R4.64], R8 ;
+#nixnan: Instrumenting memory instruction: STG.E.128 of width 128
+#nixnan: Skipping memory instruction of unknown type: STG.E.128
+#nixnan: Instrumenting instruction @!P0 FADD R3, R6, 128 ;
+#nixnan: Instrumenting instruction with 2 registers
+#nixnan: Instrumenting operand 0. div0: 0, regs: 1, count: 1
+#nixnan: Instrumenting instruction with 2 registers
+#nixnan: Instrumenting operand 1. div0: 0, regs: 1
+#nixnan: Instrumenting instruction STG.E.U8 [R4.64], R3 ;
+#nixnan: Unsupported store instruction: STG.E.U8
+#nixnan: Instrumenting instruction STG.E.U16 [R4.64], R18 ;
+#nixnan: Unsupported store instruction: STG.E.U16
+#nixnan: Instrumenting instruction FADD R0, R6, 8192 ;
+#nixnan: Instrumenting instruction with 2 registers
+#nixnan: Instrumenting operand 0. div0: 0, regs: 1, count: 1
+#nixnan: Instrumenting instruction with 2 registers
+#nixnan: Instrumenting operand 1. div0: 0, regs: 1
+#nixnan: Instrumenting instruction STG.E.U8 [R4.64], R0 ;
+#nixnan: Unsupported store instruction: STG.E.U8
+#nixnan: Instrumenting instruction FADD R0, R6, 64 ;
+#nixnan: Instrumenting instruction with 2 registers
+#nixnan: Instrumenting operand 0. div0: 0, regs: 1, count: 1
+#nixnan: Instrumenting instruction with 2 registers
+#nixnan: Instrumenting operand 1. div0: 0, regs: 1
+#nixnan: Instrumenting instruction STG.E.U8 [R4.64], R0 ;
+#nixnan: Unsupported store instruction: STG.E.U8
+#nixnan: Instrumenting instruction @!P0 FADD R3, R3, 16384 ;
+#nixnan: Instrumenting instruction with 2 registers
+#nixnan: Instrumenting operand 0. div0: 0, regs: 1, count: 1
+#nixnan: Instrumenting instruction with 2 registers
+#nixnan: Instrumenting operand 1. div0: 0, regs: 1
+#nixnan: Instrumenting instruction STG.E.U8 [R4.64], R3 ;
+#nixnan: Unsupported store instruction: STG.E.U8
+#nixnan: Instrumenting instruction STG.E.U8 [R4.64], R3 ;
+#nixnan: Unsupported store instruction: STG.E.U8
+#nixnan: Instrumenting instruction STG.E.U8 [R4.64], R3 ;
+#nixnan: Unsupported store instruction: STG.E.U8
+#nixnan: Instrumenting instruction STG.E [R4.64], R3 ;
+#nixnan: Instrumenting memory instruction: STG.E of width 32
+#nixnan: Skipping memory instruction of unknown type: STG.E
+#nixnan: Instrumenting instruction STG.E.U16 [R4.64], R3 ;
+#nixnan: Unsupported store instruction: STG.E.U16
+#nixnan: Instrumenting instruction STG.E.U16 [R4.64], R22 ;
+#nixnan: Unsupported store instruction: STG.E.U16
+#nixnan: Instrumenting instruction STG.E.64 [R4.64], R22 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R4.64], R22 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E [R4.64], R22 ;
+#nixnan: Instrumenting memory instruction: STG.E of width 32
+#nixnan: Skipping memory instruction of unknown type: STG.E
+#nixnan: Instrumenting instruction STG.E.64 [R4.64], R22 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E [R4.64], R3 ;
+#nixnan: Instrumenting memory instruction: STG.E of width 32
+#nixnan: Skipping memory instruction of unknown type: STG.E
+#nixnan: Instrumenting instruction STG.E.U8 [R4.64], R3 ;
+#nixnan: Unsupported store instruction: STG.E.U8
+#nixnan: Instrumenting instruction STG.E.128 [R4.64], R8 ;
+#nixnan: Instrumenting memory instruction: STG.E.128 of width 128
+#nixnan: Skipping memory instruction of unknown type: STG.E.128
+#nixnan: Instrumenting instruction @!P0 FADD R2, R2, 128 ;
+#nixnan: Instrumenting instruction with 2 registers
+#nixnan: Instrumenting operand 0. div0: 0, regs: 1, count: 1
+#nixnan: Instrumenting instruction with 2 registers
+#nixnan: Instrumenting operand 1. div0: 0, regs: 1
+#nixnan: Instrumenting instruction STG.E.U8 [R4.64], R3 ;
+#nixnan: Unsupported store instruction: STG.E.U8
+#nixnan: Instrumenting instruction STG.E.U16 [R4.64], R22 ;
+#nixnan: Unsupported store instruction: STG.E.U16
+#nixnan: Instrumenting instruction FADD R0, R6, 8192 ;
+#nixnan: Instrumenting instruction with 2 registers
+#nixnan: Instrumenting operand 0. div0: 0, regs: 1, count: 1
+#nixnan: Instrumenting instruction with 2 registers
+#nixnan: Instrumenting operand 1. div0: 0, regs: 1
+#nixnan: Instrumenting instruction STG.E.U8 [R4.64], R0 ;
+#nixnan: Unsupported store instruction: STG.E.U8
+#nixnan: Instrumenting instruction FADD R0, R3, 64 ;
+#nixnan: Instrumenting instruction with 2 registers
+#nixnan: Instrumenting operand 0. div0: 0, regs: 1, count: 1
+#nixnan: Instrumenting instruction with 2 registers
+#nixnan: Instrumenting operand 1. div0: 0, regs: 1
+#nixnan: Instrumenting instruction STG.E.U8 [R4.64], R0 ;
+#nixnan: Unsupported store instruction: STG.E.U8
+#nixnan: Instrumenting instruction @!P0 FADD R2, R2, 16384 ;
+#nixnan: Instrumenting instruction with 2 registers
+#nixnan: Instrumenting operand 0. div0: 0, regs: 1, count: 1
+#nixnan: Instrumenting instruction with 2 registers
+#nixnan: Instrumenting operand 1. div0: 0, regs: 1
+#nixnan: Instrumenting instruction STG.E.U8 [R4.64], R3 ;
+#nixnan: Unsupported store instruction: STG.E.U8
+#nixnan: running kernel [void at::native::unrolled_elementwise_kernel] ...
+#nixnan: Inspecting function void at::native::vectorized_elementwise_kernel<4, at::native::AbsFunctor<float>, at::detail::Array<char*, 2> >(int, at::native::AbsFunctor<float>, at::detail::Array<char*, 2>) at address 0x7813c9f13300
+#nixnan: Instrumenting instruction FADD R8, |R8|, -RZ ;
+#nixnan: Instrumenting instruction with 2 registers
+#nixnan: Instrumenting operand 0. div0: 0, regs: 1, count: 1
+#nixnan: Instrumenting instruction with 4 registers
+#nixnan: Instrumenting operand 1. div0: 0, regs: 1
+#nixnan: Instrumenting operand 2. div0: 0, regs: 1
+#nixnan: Instrumenting instruction FADD R9, |R9|, -RZ ;
+#nixnan: Instrumenting instruction with 2 registers
+#nixnan: Instrumenting operand 0. div0: 0, regs: 1, count: 1
+#nixnan: Instrumenting instruction with 4 registers
+#nixnan: Instrumenting operand 1. div0: 0, regs: 1
+#nixnan: Instrumenting operand 2. div0: 0, regs: 1
+#nixnan: Instrumenting instruction FADD R10, |R10|, -RZ ;
+#nixnan: Instrumenting instruction with 2 registers
+#nixnan: Instrumenting operand 0. div0: 0, regs: 1, count: 1
+#nixnan: Instrumenting instruction with 4 registers
+#nixnan: Instrumenting operand 1. div0: 0, regs: 1
+#nixnan: Instrumenting operand 2. div0: 0, regs: 1
+#nixnan: Instrumenting instruction FADD R11, |R11|, -RZ ;
+#nixnan: Instrumenting instruction with 2 registers
+#nixnan: Instrumenting operand 0. div0: 0, regs: 1, count: 1
+#nixnan: Instrumenting instruction with 4 registers
+#nixnan: Instrumenting operand 1. div0: 0, regs: 1
+#nixnan: Instrumenting operand 2. div0: 0, regs: 1
+#nixnan: Instrumenting instruction STG.E.128 [R4.64], R8 ;
+#nixnan: Instrumenting memory instruction: STG.E.128 of width 128
+#nixnan: Found memory instruction of type: f32
+#nixnan: Instrumenting instruction FADD R7, |R10|, -RZ ;
+#nixnan: Instrumenting instruction with 2 registers
+#nixnan: Instrumenting operand 0. div0: 0, regs: 1, count: 1
+#nixnan: Instrumenting instruction with 4 registers
+#nixnan: Instrumenting operand 1. div0: 0, regs: 1
+#nixnan: Instrumenting operand 2. div0: 0, regs: 1
+#nixnan: Instrumenting instruction STG.E [R4.64], R7 ;
+#nixnan: Instrumenting memory instruction: STG.E of width 32
+#nixnan: Found memory instruction of type: f32
+#nixnan: Instrumenting instruction FADD R9, |R9|, -RZ ;
+#nixnan: Instrumenting instruction with 2 registers
+#nixnan: Instrumenting operand 0. div0: 0, regs: 1, count: 1
+#nixnan: Instrumenting instruction with 4 registers
+#nixnan: Instrumenting operand 1. div0: 0, regs: 1
+#nixnan: Instrumenting operand 2. div0: 0, regs: 1
+#nixnan: Instrumenting instruction STG.E [R4.64], R9 ;
+#nixnan: Instrumenting memory instruction: STG.E of width 32
+#nixnan: Found memory instruction of type: f32
+#nixnan: Instrumenting instruction FADD R3, |R8|, -RZ ;
+#nixnan: Instrumenting instruction with 2 registers
+#nixnan: Instrumenting operand 0. div0: 0, regs: 1, count: 1
+#nixnan: Instrumenting instruction with 4 registers
+#nixnan: Instrumenting operand 1. div0: 0, regs: 1
+#nixnan: Instrumenting operand 2. div0: 0, regs: 1
+#nixnan: Instrumenting instruction STG.E [R4.64], R3 ;
+#nixnan: Instrumenting memory instruction: STG.E of width 32
+#nixnan: Found memory instruction of type: f32
+#nixnan: Instrumenting instruction FADD R5, |R2|, -RZ ;
+#nixnan: Instrumenting instruction with 2 registers
+#nixnan: Instrumenting operand 0. div0: 0, regs: 1, count: 1
+#nixnan: Instrumenting instruction with 4 registers
+#nixnan: Instrumenting operand 1. div0: 0, regs: 1
+#nixnan: Instrumenting operand 2. div0: 0, regs: 1
+#nixnan: Instrumenting instruction STG.E [R2.64], R5 ;
+#nixnan: Instrumenting memory instruction: STG.E of width 32
+#nixnan: Found memory instruction of type: f32
+#nixnan: running kernel [void at::native::vectorized_elementwise_kernel] ...
+#nixnan: error [NaN] detected in operand 1 of instruction FADD R7, |R10|, -RZ ; in function void at::native::vectorized_elementwise_kernel at line 0 of type f32
+#nixnan: error [NaN] detected in operand 0 of instruction FADD R7, |R10|, -RZ ; in function void at::native::vectorized_elementwise_kernel at line 0 of type f32
+#nixnan: error [NaN] detected in operand 1 of instruction STG.E [R4.64], R7 ; in function void at::native::vectorized_elementwise_kernel at line 0 of type f32
+#nixnan: Inspecting function void at::native::vectorized_elementwise_kernel<4, at::native::AUnaryFunctor<float, float, bool, at::native::(anonymous namespace)::CompareEqFunctor<float> >, at::detail::Array<char*, 2> >(int, at::native::AUnaryFunctor<float, float, bool, at::native::(anonymous namespace)::CompareEqFunctor<float> >, at::detail::Array<char*, 2>) at address 0x7813cd5f7800
+#nixnan: Instrumenting instruction STG.E [R2.64], R5 ;
+#nixnan: Instrumenting memory instruction: STG.E of width 32
+#nixnan: Skipping memory instruction of unknown type: STG.E
+#nixnan: Instrumenting instruction STG.E.U8 [R4.64], R8 ;
+#nixnan: Unsupported store instruction: STG.E.U8
+#nixnan: Instrumenting instruction STG.E.U8 [R4.64], R7 ;
+#nixnan: Unsupported store instruction: STG.E.U8
+#nixnan: Instrumenting instruction STG.E.U8 [R4.64], R6 ;
+#nixnan: Unsupported store instruction: STG.E.U8
+#nixnan: Instrumenting instruction STG.E.U8 [R2.64], R0 ;
+#nixnan: Unsupported store instruction: STG.E.U8
+#nixnan: Inspecting function void at::native::vectorized_elementwise_kernel<4, at::native::BinaryFunctor<float, float, bool, at::native::(anonymous namespace)::CompareEqFunctor<float> >, at::detail::Array<char*, 3> >(int, at::native::BinaryFunctor<float, float, bool, at::native::(anonymous namespace)::CompareEqFunctor<float> >, at::detail::Array<char*, 3>) at address 0x7813cd617e00
+#nixnan: Instrumenting instruction STG.E [R2.64], R5 ;
+#nixnan: Instrumenting memory instruction: STG.E of width 32
+#nixnan: Skipping memory instruction of unknown type: STG.E
+#nixnan: Instrumenting instruction STG.E.U8 [R4.64], R6 ;
+#nixnan: Unsupported store instruction: STG.E.U8
+#nixnan: Instrumenting instruction STG.E.U8 [R4.64], R8 ;
+#nixnan: Unsupported store instruction: STG.E.U8
+#nixnan: Instrumenting instruction STG.E.U8 [R4.64], R9 ;
+#nixnan: Unsupported store instruction: STG.E.U8
+#nixnan: Instrumenting instruction STG.E.U8 [R2.64], R0 ;
+#nixnan: Unsupported store instruction: STG.E.U8
+#nixnan: Inspecting function void at::native::vectorized_elementwise_kernel<4, at::native::BinaryFunctor<bool, bool, bool, at::native::binary_internal::MulFunctor<bool> >, at::detail::Array<char*, 3> >(int, at::native::BinaryFunctor<bool, bool, bool, at::native::binary_internal::MulFunctor<bool> >, at::detail::Array<char*, 3>) at address 0x7813fb0f0000
+#nixnan: Instrumenting instruction STG.E [R2.64], R5 ;
+#nixnan: Instrumenting memory instruction: STG.E of width 32
+#nixnan: Skipping memory instruction of unknown type: STG.E
+#nixnan: Instrumenting instruction STG.E.U8 [R8.64], R11 ;
+#nixnan: Unsupported store instruction: STG.E.U8
+#nixnan: Instrumenting instruction STG.E.U8 [R4.64], R9 ;
+#nixnan: Unsupported store instruction: STG.E.U8
+#nixnan: Instrumenting instruction STG.E.U8 [R4.64], R3 ;
+#nixnan: Unsupported store instruction: STG.E.U8
+#nixnan: Instrumenting instruction STG.E.U8 [R2.64], R5 ;
+#nixnan: Unsupported store instruction: STG.E.U8
+#nixnan: Inspecting function void at::native::vectorized_elementwise_kernel<4, at::native::BinaryFunctor<bool, bool, bool, at::native::BitwiseAndFunctor<bool> >, at::detail::Array<char*, 3> >(int, at::native::BinaryFunctor<bool, bool, bool, at::native::BitwiseAndFunctor<bool> >, at::detail::Array<char*, 3>) at address 0x7813f7edd300
+#nixnan: Instrumenting instruction STG.E [R2.64], R5 ;
+#nixnan: Instrumenting memory instruction: STG.E of width 32
+#nixnan: Skipping memory instruction of unknown type: STG.E
+#nixnan: Instrumenting instruction STG.E.U8 [R8.64], R11 ;
+#nixnan: Unsupported store instruction: STG.E.U8
+#nixnan: Instrumenting instruction STG.E.U8 [R4.64], R9 ;
+#nixnan: Unsupported store instruction: STG.E.U8
+#nixnan: Instrumenting instruction STG.E.U8 [R4.64], R3 ;
+#nixnan: Unsupported store instruction: STG.E.U8
+#nixnan: Instrumenting instruction STG.E.U8 [R2.64], R5 ;
+#nixnan: Unsupported store instruction: STG.E.U8
+#nixnan: Inspecting function void at_cuda_detail::cub::DeviceReduceSingleTileKernel<at_cuda_detail::cub::DeviceReducePolicy<int, int, at_cuda_detail::cub::Sum>::Policy600, at_cuda_detail::cub::TransformInputIterator<bool, at::native::(anonymous namespace)::NonZeroOp<bool>, bool const*, long>, int*, int, at_cuda_detail::cub::Sum, int, int>(at_cuda_detail::cub::TransformInputIterator<bool, at::native::(anonymous namespace)::NonZeroOp<bool>, bool const*, long>, int*, int, at_cuda_detail::cub::Sum, int) at address 0x7813ecaf1100
+#nixnan: Instrumenting instruction STG.E [R2.64], R5 ;
+#nixnan: Instrumenting memory instruction: STG.E of width 32
+#nixnan: Skipping memory instruction of unknown type: STG.E
+#nixnan: Instrumenting instruction STG.E [R2.64], R5 ;
+#nixnan: Instrumenting memory instruction: STG.E of width 32
+#nixnan: Skipping memory instruction of unknown type: STG.E
+#nixnan: running kernel [void at_cuda_detail::cub::DeviceReduceSingleTileKernel] ...
+#nixnan: Inspecting function void at_cuda_detail::cub::DeviceCompactInitKernel<at_cuda_detail::cub::ScanTileState<int, true>, int*>(at_cuda_detail::cub::ScanTileState<int, true>, int, int*) at address 0x7813ec9fee00
+#nixnan: Instrumenting instruction @!P1 STG.E.64 [R2.64], R6 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction @!P0 STG.E.64 [R4.64], RZ ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E [R2.64], RZ ;
+#nixnan: Instrumenting memory instruction: STG.E of width 32
+#nixnan: Skipping memory instruction of unknown type: STG.E
+#nixnan: running kernel [void at_cuda_detail::cub::DeviceCompactInitKernel] ...
+#nixnan: Inspecting function void at_cuda_detail::cub::DeviceSelectSweepKernel<at_cuda_detail::cub::DispatchSelectIf<at_cuda_detail::cub::CountingInputIterator<long, long>, at_cuda_detail::cub::TransformInputIterator<bool, at::native::(anonymous namespace)::NonZeroOp<bool>, bool const*, long>, long*, int*, at_cuda_detail::cub::NullType, at_cuda_detail::cub::NullType, int, false, false>::PtxSelectIfPolicyT, at_cuda_detail::cub::CountingInputIterator<long, long>, at_cuda_detail::cub::TransformInputIterator<bool, at::native::(anonymous namespace)::NonZeroOp<bool>, bool const*, long>, long*, int*, at_cuda_detail::cub::ScanTileState<int, true>, at_cuda_detail::cub::NullType, at_cuda_detail::cub::NullType, int, false>(at_cuda_detail::cub::CountingInputIterator<long, long>, at_cuda_detail::cub::TransformInputIterator<bool, at::native::(anonymous namespace)::NonZeroOp<bool>, bool const*, long>, long*, int*, at_cuda_detail::cub::ScanTileState<int, true>, at_cuda_detail::cub::NullType, at_cuda_detail::cub::NullType, int, int) at address 0x7813ecae7500
+#nixnan: Instrumenting instruction @!P2 STG.E.64 [R20.64], R16 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction @!P0 STG.E.64 [R18.64], R12 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction @!P1 STG.E.64 [R2.64], R14 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction @!P3 STG.E.64 [R4.64], R22 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R10.64], R2 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R10.64], R2 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64+-0x800], R10 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64+-0x400], R12 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64], R14 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64+0x400], R16 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64+0x800], R18 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64+0xc00], R20 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64+0x1000], R22 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64+0x1400], R24 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64+0x1800], R28 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64+0x1c00], R30 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64+0x2000], R32 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64+0x2400], R10 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64+0x2800], R12 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64+0x2c00], R14 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64+0x3000], R34 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64+0x3400], R36 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64+-0x800], R10 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64+-0x400], R12 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64], R14 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64+0x400], R16 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64+0x800], R18 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64+0xc00], R20 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64+0x1000], R22 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64+0x1400], R24 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64+-0x800], R4 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64+-0x400], R6 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64], R10 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64+0x400], R12 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction @!P1 STG.E.64 [R10.64], R12 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction @!P2 STG.E.64 [R4.64], R14 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction @!P3 STG.E.64 [R6.64], R18 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction @!P4 STG.E.64 [R2.64], R20 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64], R4 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R6.64], R2 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64+-0x800], R6 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64+-0x400], R10 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64], R12 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64+0x400], R14 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64+0x800], R16 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64+0xc00], R18 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64+0x1000], R20 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64+0x1400], R22 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64+0x1800], R24 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64+0x1c00], R28 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64+0x2000], R30 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64+0x2400], R6 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64+0x2800], R10 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64+0x2c00], R12 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64+0x3000], R32 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64+0x3400], R34 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64+-0x800], R6 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64+-0x400], R10 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64], R12 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64+0x400], R14 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64+0x800], R16 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64+0xc00], R18 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64+0x1000], R20 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64+0x1400], R22 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction @P0 STG.E.64 [R2.64+-0x800], R4 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction @P0 STG.E.64 [R2.64+-0x400], R6 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction @P0 STG.E.64 [R2.64], R10 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction @P0 STG.E.64 [R2.64+0x400], R12 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E [R2.64], R9 ;
+#nixnan: Instrumenting memory instruction: STG.E of width 32
+#nixnan: Skipping memory instruction of unknown type: STG.E
+#nixnan: Instrumenting instruction @P0 STG.E.64 [R2.64], R6 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction @P1 STG.E.64 [R10.64], R8 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction @P2 STG.E.64 [R14.64], R12 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction @P3 STG.E.64 [R20.64], R16 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64], R18 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R4.64], R2 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64+-0x800], R4 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64+-0x400], R6 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64], R8 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64+0x400], R12 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64+0x800], R14 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64+0xc00], R16 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64+0x1000], R18 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64+0x1400], R20 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64+0x1800], R22 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64+0x1c00], R24 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64+0x2000], R26 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64+0x2400], R28 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64+0x2800], R4 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64+0x2c00], R6 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64+0x3000], R30 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64+0x3400], R32 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64+-0x800], R4 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64+-0x400], R6 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64], R8 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64+0x400], R12 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64+0x800], R14 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64+0xc00], R16 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64+0x1000], R18 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64+0x1400], R20 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64+-0x800], R4 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64+-0x400], R6 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64], R8 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64+0x400], R10 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction @P0 STG.E.64 [R2.64], R6 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction @P1 STG.E.64 [R4.64], R8 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction @P2 STG.E.64 [R10.64], R12 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction @P3 STG.E.64 [R14.64], R16 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R2.64], R18 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R6.64], R4 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R4.64+-0x800], R6 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R4.64+-0x400], R8 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R4.64], R12 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R4.64+0x400], R14 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R4.64+0x800], R16 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R4.64+0xc00], R18 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R4.64+0x1000], R20 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R4.64+0x1400], R22 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R4.64+0x1800], R24 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R4.64+0x1c00], R26 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R4.64+0x2000], R28 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R4.64+0x2400], R30 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R4.64+0x2800], R6 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R4.64+0x2c00], R8 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R4.64+0x3000], R32 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R4.64+0x3400], R34 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R4.64+-0x800], R6 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R4.64+-0x400], R8 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R4.64], R12 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R4.64+0x400], R14 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R4.64+0x800], R16 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R4.64+0xc00], R18 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R4.64+0x1000], R20 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R4.64+0x1400], R22 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R4.64+-0x800], R2 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R4.64+-0x400], R6 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R4.64], R8 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.64 [R4.64+0x400], R10 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: running kernel [void at_cuda_detail::cub::DeviceSelectSweepKernel] ...
+a=tensor([nan, 0., 0., 0., nan, 0., 0., 0., nan, 0., 0., 0., nan, 0., 0., 0., nan, 0., 0., 0.],
+       device='cuda:0', dtype=torch.bfloat16)
+#nixnan: Inspecting function void at::native::vectorized_elementwise_kernel<4, at::native::FillFunctor<c10::BFloat16>, at::detail::Array<char*, 1> >(int, at::native::FillFunctor<c10::BFloat16>, at::detail::Array<char*, 1>) at address 0x7813c9465e00
+#nixnan: Instrumenting instruction STG.E.64 [R2.64], R4 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: Instrumenting instruction STG.E.U16 [R2.64], R13 ;
+#nixnan: Unsupported store instruction: STG.E.U16
+#nixnan: Instrumenting instruction STG.E.U16 [R2.64], R13 ;
+#nixnan: Unsupported store instruction: STG.E.U16
+#nixnan: Instrumenting instruction STG.E.U16 [R2.64], R13 ;
+#nixnan: Unsupported store instruction: STG.E.U16
+#nixnan: Instrumenting instruction STG.E.U16 [R2.64], R13 ;
+#nixnan: Unsupported store instruction: STG.E.U16
+#nixnan: Inspecting function void at::native::(anonymous namespace)::multi_tensor_apply_kernel<at::native::(anonymous namespace)::TensorListMetadata<2>, at::native::(anonymous namespace)::UnaryOpFunctor<c10::BFloat16, 2, 1, 1>, at::native::Identity<float> >(at::native::(anonymous namespace)::TensorListMetadata<2>, at::native::(anonymous namespace)::UnaryOpFunctor<c10::BFloat16, 2, 1, 1>, at::native::Identity<float>) at address 0x7813f95f7b00
+#nixnan: Instrumenting instruction @P1 STG.E.U16 [R8.64], R30 ;
+#nixnan: Unsupported store instruction: STG.E.U16
+#nixnan: Instrumenting instruction @P5 STG.E.U16 [R10.64], R28 ;
+#nixnan: Unsupported store instruction: STG.E.U16
+#nixnan: Instrumenting instruction @P0 STG.E.U16 [R12.64], R24 ;
+#nixnan: Unsupported store instruction: STG.E.U16
+#nixnan: Instrumenting instruction @P2 STG.E.U16 [R6.64], R26 ;
+#nixnan: Unsupported store instruction: STG.E.U16
+#nixnan: Instrumenting instruction STG.E.64 [R8.64], R12 ;
+#nixnan: Instrumenting memory instruction: STG.E.64 of width 64
+#nixnan: Skipping memory instruction of unknown type: STG.E.64
+#nixnan: running kernel [void at::native::] ...
+b=tensor([nan, 0., 0., 0., nan, 0., 0., 0., nan, 0., 0., 0., nan, 0., 0., 0., nan, 0., 0., 0.],
+       device='cuda:0', dtype=torch.bfloat16)
+#nixnan: Finalizing GPU context...
+
+#nixnan: ------------ nixnan Report -----------
+
+#nixnan: --- FP16 Operations ---
+#nixnan: NaN:                    0 (0 repeats)
+#nixnan: Infinity:               0 (0 repeats)
+#nixnan: -Infinity:              0 (0 repeats)
+#nixnan: Subnormal:              0 (0 repeats)
+#nixnan: Division by 0:          0 (0 repeats)
+
+#nixnan: --- BF16 Operations ---
+#nixnan: NaN:                    0 (0 repeats)
+#nixnan: Infinity:               0 (0 repeats)
+#nixnan: -Infinity:              0 (0 repeats)
+#nixnan: Subnormal:              0 (0 repeats)
+#nixnan: Division by 0:          0 (0 repeats)
+
+#nixnan: --- FP32 Operations ---
+#nixnan: NaN:                    2 (2 repeats)
+#nixnan: Infinity:               0 (0 repeats)
+#nixnan: -Infinity:              0 (0 repeats)
+#nixnan: Subnormal:              0 (0 repeats)
+#nixnan: Division by 0:          0 (0 repeats)
+
+#nixnan: --- FP64 Operations ---
+#nixnan: NaN:                    0 (0 repeats)
+#nixnan: Infinity:               0 (0 repeats)
+#nixnan: -Infinity:              0 (0 repeats)
+#nixnan: Subnormal:              0 (0 repeats)
+#nixnan: Division by 0:          0 (0 repeats)
+
+#nixnan: --- FP16 Memory  Operations ---
+#nixnan: NaN:                    0 (0 repeats)
+#nixnan: --- BF16 Memory  Operations ---
+#nixnan: NaN:                    0 (0 repeats)
+#nixnan: --- FP32 Memory  Operations ---
+#nixnan: NaN:                    1 (1 repeats)
+#nixnan: --- FP64 Memory  Operations ---
+#nixnan: NaN:                    0 (0 repeats)
+ganesh@dknuth:~/repos/pytorch/issue-159333$ exit
+exit
+
+Script done on 2025-09-23 23:31:01-06:00 [COMMAND_EXIT_CODE="0"]

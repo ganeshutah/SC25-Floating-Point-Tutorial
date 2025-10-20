@@ -1,0 +1,25 @@
+Script started on 2025-07-13 13:22:14-06:00 [TERM="xterm-256color" TTY="/dev/pts/1" COLUMNS="106" LINES="42"]
+[?2004h]0;ganesh@dknuth: ~/repos/pytorch/issue-157237[01;32mganesh@dknuth[00m:[01;34m~/repos/pytorch/issue-157237[00m$ LD_PRELOAD=~/nixnan.so python run.py
+[?2004l------------- NVBit (NVidia Binary Instrumentation Tool v1.7.2) Loaded --------------
+NVBit core environment variables (mostly for nvbit-devs):
+ACK_CTX_INIT_LIMITATION = 0 - if set, no warning will be printed for nvbit_at_ctx_init()
+            NVDISASM = nvdisasm - override default nvdisasm found in PATH
+            NOBANNER = 0 - if set, does not print this banner
+       NO_EAGER_LOAD = 0 - eager module loading is turned on by NVBit to prevent potential NVBit tool deadlock, turn it off if you want to use the lazy module loading feature
+---------------------------------------------------------------------------------
+         INSTR_BEGIN = 0 - Beginning of the instruction interval where to apply instrumentation
+           INSTR_END = 4294967295 - End of the instruction interval where to apply instrumentation
+        TOOL_VERBOSE = 0 - Enable verbosity inside the tool
+   ENABLE_FUN_DETAIL = 0 - Enable detailed function information for kernel
+     PRINT_ILL_INSTR = 0 - Print the instruction which caused the exception
+            SAMPLING = 0 - Instrument a repeat kernel every SAMPLING times
+----------------------------------------------------------------------------------
+Test sequence has 4 input NaNs.
+
+Batch Size: 4   -> Output NaNs for the sequence: 4
+Batch Size: 16  -> Output NaNs for the sequence: 4
+Batch Size: 32  -> Output NaNs for the sequence: 4
+[?2004h]0;ganesh@dknuth: ~/repos/pytorch/issue-157237[01;32mganesh@dknuth[00m:[01;34m~/repos/pytorch/issue-157237[00m$ exit
+[?2004lexit
+
+Script done on 2025-07-13 13:22:45-06:00 [COMMAND_EXIT_CODE="0"]
