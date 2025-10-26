@@ -1,7 +1,3 @@
-# SC25-Floating-Point-Tutorial
-Tutorial material for the half-day tutorial on FP Exception detection in heterogeneous hardware
 
-[Tutorial Video](https://youtu.be/1Ka8g_06Nxg)
-
-
+These are the tools shown during our SC'25 half-day tutorial on Nov 16, 2025 in St. Louis, MO.
 

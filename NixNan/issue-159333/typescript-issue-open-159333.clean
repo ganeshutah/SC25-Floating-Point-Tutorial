@@ -1,0 +1,62 @@
+Script started on 2025-07-28 22:56:39-06:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="104" LINES="15"]
+?2004h0;ganesh@dknuth: ~/repos/pytorch/issue-15933301;32mganesh@dknuth00m:01;34m~/repos/pytorch/issue-15933300m$ 7mpython -c "import torch; print(torch.__version__); print(tor27m7mc27m7mh.cuda.get_device_name(0))"27m
+AACCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCK
+K
+KAACCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCLD_PRELOAD=~/nixnan.so python run.py
+------------- NVBit (NVidia Binary Instrumentation Tool v1.7.2) Loaded --------------
+NVBit core environment variables (mostly for nvbit-devs):
+ACK_CTX_INIT_LIMITATION = 0 - if set, no warning will be printed for nvbit_at_ctx_init()
+	    NVDISASM = nvdisasm - override default nvdisasm found in PATH
+	    NOBANNER = 0 - if set, does not print this banner
+       NO_EAGER_LOAD = 0 - eager module loading is turned on by NVBit to prevent potential NVBit tool deadlock, turn it off if you want to use the lazy module loading feature
+---------------------------------------------------------------------------------
+	 INSTR_BEGIN = 0 - Beginning of the instruction interval where to apply instrumentation
+	   INSTR_END = 4294967295 - End of the instruction interval where to apply instrumentation
+	TOOL_VERBOSE = 0 - Enable verbosity inside the tool
+   ENABLE_FUN_DETAIL = 0 - Enable detailed function information for kernel
+     PRINT_ILL_INSTR = 0 - Print the instruction which caused the exception
+	    SAMPLING = 0 - Instrument a repeat kernel every SAMPLING times
+----------------------------------------------------------------------------------
+WARNING: Do not call CUDA memory allocation in nvbit_at_ctx_init(). It will cause deadlocks. Do them in nvbit_tool_init(). If you encounter deadlocks, remove CUDA API calls to debug.
+#nixnan: Initializing GPU context...
+#nixnan: Could not open kernel_whitelist.txt!
+#nixnan: Could not open kernel_blacklist.txt!
+#nixnan: instrumenting all kernels
+#nixnan: running kernel [void at::native::vectorized_elementwise_kernel] ...
+#nixnan: running kernel [void at_cuda_detail::cub::DeviceReduceSingleTileKernel] ...
+#nixnan: running kernel [void at_cuda_detail::cub::DeviceCompactInitKernel] ...
+#nixnan: running kernel [void at_cuda_detail::cub::DeviceSelectSweepKernel] ...
+a=tensor([nan, nan, nan, nan, nan], device='cuda:0', dtype=torch.bfloat16)
+#nixnan: running kernel [void at::native::] ...
+b=tensor([nan, nan, nan, nan, nan], device='cuda:0', dtype=torch.bfloat16)
+a.view(torch.uint16)=tensor([32763, 32764, 32765, 32766, 32767], device='cuda:0',
+       dtype=torch.uint16)
+b.view(torch.uint16)=tensor([32767, 32767, 32767, 32767, 32767], device='cuda:0',
+       dtype=torch.uint16)
+#nixnan: running kernel [void at::native::reduce_kernel] ...
+#nixnan: Finalizing GPU context...
+
+#nixnan: ------------ nixnan Report -----------
+
+#nixnan: --- FP16 Operations ---
+#nixnan: NaN:			 0 (0 repeats)
+#nixnan: Infinity:		 0 (0 repeats)
+#nixnan: Subnormal:		 0 (0 repeats)
+#nixnan: Division by 0:		 0 (0 repeats)
+
+#nixnan: --- FP32 Operations ---
+#nixnan: NaN:			 0 (0 repeats)
+#nixnan: Infinity:		 0 (0 repeats)
+#nixnan: Subnormal:		 0 (0 repeats)
+#nixnan: Division by 0:		 0 (0 repeats)
+
+#nixnan: --- FP64 Operations ---
+#nixnan: NaN:			 0 (0 repeats)
+#nixnan: Infinity:		 0 (0 repeats)
+#nixnan: Subnormal:		 0 (0 repeats)
+#nixnan: Division by 0:		 0 (0 repeats)
+
+?2004h0;ganesh@dknuth: ~/repos/pytorch/issue-15933301;32mganesh@dknuth00m:01;34m~/repos/pytorch/issue-15933300m$ exit
+exit4l
+
+Script done on 2025-07-28 22:58:09-06:00 [COMMAND_EXIT_CODE="0"]

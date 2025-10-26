@@ -1,0 +1,7 @@
+kernel,first_nan
+void kgemm_4bit_inference_naive,5172
+void pytorch_flash::flash_fwd_kernel,2120
+void cutlass::Kernel2,1720
+std::enable_if,8
+void gemv2N_kernel,0
+void gemv2T_kernel_val,0

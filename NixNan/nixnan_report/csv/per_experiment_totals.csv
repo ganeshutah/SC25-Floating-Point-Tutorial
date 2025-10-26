@@ -1,0 +1,6 @@
+experiment,total_first_nan,total_first_inf,total_first_nonfinite
+attention_clip,470,0,470
+baseline,3074,344,3418
+bfloat16,1922,815,2737
+eager,480,272,752
+layernorm_eps,3074,374,3448
