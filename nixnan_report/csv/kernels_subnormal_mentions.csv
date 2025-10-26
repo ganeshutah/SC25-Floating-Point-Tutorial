@@ -1,9 +1,0 @@
-kernel,subnormal_mentions
-void kgemm_4bit_inference_naive,8968
-void pytorch_flash::flash_fwd_kernel,1925
-void cutlass::Kernel2,732
-std::enable_if,200
-ampere_fp16_s16816gemm_fp16_64x64_ldg8_f2f_stages_64x6_tn,176
-ampere_fp16_s16816gemm_fp16_64x64_sliced1x2_ldg8_f2f_stages_64x6_tn,160
-void gemv2N_kernel,80
-void gemv2T_kernel_val,32

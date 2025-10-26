@@ -1,4 +1,0 @@
-Experiment: bfloat16_compute
-Statistics:
-  NaNs: 0
-  Infs: 0

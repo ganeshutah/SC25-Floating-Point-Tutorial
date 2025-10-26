@@ -1,9 +1,0 @@
-QUICK START
-===========
-./install.sh
-make priority
-make analyze
-
-WITH SASS:
-make nixnan-priority
-make analyze-sass

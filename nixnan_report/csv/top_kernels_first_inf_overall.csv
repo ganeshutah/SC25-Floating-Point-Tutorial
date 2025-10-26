@@ -1,7 +1,0 @@
-kernel,first_inf
-void kgemm_4bit_inference_naive,1380
-std::enable_if,160
-void gemv2N_kernel,108
-void pytorch_flash::flash_fwd_kernel,77
-void cutlass::Kernel2,76
-void gemv2T_kernel_val,4

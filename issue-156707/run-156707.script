@@ -1,5 +1,0 @@
-#nixnan: ----------------------------------------------------------------------------------
-Traceback (most recent call last):
-  File "/home/ganesh/repos/pytorch/issue-156707/run.py", line 15, in <module>
-    out_mps = F.scaled_dot_product_attention(q.to('mps'), k.to('mps'), v.to('mps'), attn_mask=mask.to('mps'))
-RuntimeError: PyTorch is not linked with support for mps devices

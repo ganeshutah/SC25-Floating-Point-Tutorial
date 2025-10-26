@@ -1,7 +1,0 @@
-Script started on 2025-07-21 14:32:51-06:00 [TERM="dumb" TTY="/dev/pts/2" COLUMNS="120" LINES="35"]
-ganesh@dknuth:~/repos/pytorch/issue-156707$ ls
-run.py	run-variant-cuda.py  run-variant-cuda.py~  typescript  typescript-issue-156707
-ganesh@dknuth:~/repos/pytorch/issue-156707$ exit
-exit
-
-Script done on 2025-07-21 14:32:56-06:00 [COMMAND_EXIT_CODE="0"]
